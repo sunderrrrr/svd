@@ -166,3 +166,36 @@ document.querySelectorAll('.services-grid, .steps-track, .why-grid, .pricing-gri
         c.style.transitionDelay = (i * 0.1) + 's';
     });
 });
+
+
+/* ===== COOKIE CONSENT ===== */
+(function () {
+    const cookieConsent = document.getElementById('cookieConsent');
+    const acceptBtn = document.getElementById('cookieAcceptBtn');
+
+    // Проверяем, было ли уже принято согласие
+    //const cookieAccepted = localStorage.getItem('cookieConsentAccepted');
+
+    if (cookieAccepted === 'true') {
+        cookieConsent.style.display = 'none';
+    }
+
+    // Обработчик клика по кнопке OK
+    acceptBtn.addEventListener('click', function () {
+        // Сохраняем согласие в localStorage
+        localStorage.setItem('cookieConsentAccepted', 'true');
+
+        // Добавляем класс hide для анимации исчезновения
+        cookieConsent.classList.add('hide');
+
+        // Скрываем блок после завершения анимации
+        setTimeout(() => {
+            cookieConsent.style.display = 'none';
+        }, 400);
+    });
+
+    // Если блок по какой-то причине скрыт, но согласие не принято — показываем
+    if (cookieAccepted !== 'true') {
+        cookieConsent.style.display = 'block';
+    }
+})();

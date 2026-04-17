@@ -88,6 +88,7 @@ nav {
 .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: .4rem;
     padding: .55rem 1.2rem;
     border-radius: 6px;
@@ -98,6 +99,19 @@ nav {
     text-decoration: none;
     transition: all .25s;
     border: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    vertical-align: middle;
+}
+
+.btn svg {
+    display: block;
+    flex-shrink: 0;
+    vertical-align: middle;
+    position: relative;
+    top: -0.5px;
+    /* Тонкая корректировка для идеального выравнивания */
 }
 
 .btn-primary {
@@ -886,6 +900,7 @@ h2 {
     gap: .5rem;
     flex-wrap: wrap;
     margin-top: .5rem;
+
 }
 
 .preset-pill {
@@ -899,6 +914,14 @@ h2 {
     cursor: pointer;
     transition: all .2s;
     white-space: nowrap;
+    vertical-align: middle;
+    justify-content: center;
+    text-align: center;
+}
+
+.preset-pill svg {
+    justify-content: center;
+    align-self: center;
 }
 
 .preset-pill:hover {
@@ -1355,4 +1378,206 @@ footer {
     100% {
         transform: translateX(-50%);
     }
+}
+
+
+/* COOKIE CONSENT */
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.25rem 2rem;
+    background: rgba(10, 0, 5, 0.98);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(192, 0, 30, 0.35);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: slideUpCookie 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes slideUpCookie {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.cookie-consent.hide {
+    transform: translateY(100%);
+    animation: none;
+    transition: transform 0.4s cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+.cookie-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cookie-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px rgba(192, 0, 30, 0.3));
+    animation: cookieGlow 3s infinite alternate;
+    flex-shrink: 0;
+}
+
+@keyframes cookieGlow {
+    0% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+.cookie-content {
+    flex: 1;
+    min-width: 260px;
+}
+
+.cookie-text {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--text2);
+    margin: 0;
+}
+
+.cookie-text strong {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.cookie-btn {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 6px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+}
+
+.cookie-btn:hover {
+    background: var(--red2);
+    transform: translateY(-1px);
+    box-shadow: 0 0 20px var(--red-glow);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.cookie-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 0 10px var(--red-glow);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .cookie-consent {
+        padding: 1rem;
+    }
+
+    .cookie-container {
+        gap: 1rem;
+    }
+
+    .cookie-icon {
+        font-size: 1.5rem;
+    }
+
+    .cookie-text {
+        font-size: 0.75rem;
+    }
+
+    .cookie-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.8rem;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cookie-container {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .cookie-icon {
+        display: none;
+    }
+
+    .cookie-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Отступ снизу для мобильной sticky-cta */
+@media (max-width: 768px) {
+    .cookie-consent {
+        bottom: 70px;
+    }
+}
+
+
+/* === ВЫРАВНИВАНИЕ ИКОНОК И ТЕКСТА В КНОПКАХ === */
+.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center;
+    gap: 6px;
+    vertical-align: middle;
+    line-height: 1.2;
+}
+
+.btn svg {
+    display: block;
+    flex-shrink: 0;
+    vertical-align: middle;
+    position: relative;
+    top: -0.5px;
+}
+
+/* Исправление для мобильной sticky-cta */
+.sticky-cta .btn {
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+.sticky-cta .btn svg {
+    margin-right: 6px;
+}
+
+/* Исправление для кнопок-ссылок (если они есть) */
+a.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    text-decoration: none;
+}
+
+/* Для кнопок в калькуляторе */
+.calc-actions .btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center;
 }
