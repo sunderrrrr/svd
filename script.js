@@ -174,7 +174,7 @@ document.querySelectorAll('.services-grid, .steps-track, .why-grid, .pricing-gri
     const acceptBtn = document.getElementById('cookieAcceptBtn');
 
     // Проверяем, было ли уже принято согласие
-    //const cookieAccepted = localStorage.getItem('cookieConsentAccepted');
+    const cookieAccepted = localStorage.getItem('cookieConsentAccepted');
 
     if (cookieAccepted === 'true') {
         cookieConsent.style.display = 'none';
