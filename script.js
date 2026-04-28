@@ -184,15 +184,15 @@ function calcUpdate() {
             distanceSurcharge = (distance - 500) * 500;
             duty += distanceSurcharge;
         }
-        const lawyerFee = currentType === 'fiz' ? 15000 : 75000;
-        const total = duty + lawyerFee;
+        const lawyerFee = 0;
+        const total = duty;
 
         rKw.textContent = kw + ' кВт';
         rRate.textContent = fmt(effectiveRate) + '/кВт';
         rDistance.textContent = distanceSurcharge > 0 ? fmt(distanceSurcharge) : '0 ₽';
         rPhase.textContent = phase === '3' ? '3 фазы (×1.2)' : '1 фаза (×1.0)';
         rDuty.textContent = fmt(duty);
-        rLawyer.textContent = fmt(lawyerFee);
+        //rLawyer.textContent = fmt(lawyerFee);
         rTotal.textContent = '~' + fmt(total);
         rHint.textContent = 'Госпошлина + услуги юриста. Точная сумма после консультации. Оплата в 3 этапа.';
         rTotal.style.color = 'var(--red3)';
@@ -322,3 +322,25 @@ document.querySelectorAll('.services-grid, .steps-track, .why-grid, .pricing-gri
         cookieConsent.style.display = 'block';
     }
 })();
+
+// Якорные кнопки: скролл к услугам с включением нужной вкладки
+document.querySelectorAll('.hero-anchor-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const targetGridId = this.dataset.scrollTo; // 'services-fiz' или 'services-ur'
+    const tabTarget = targetGridId === 'services-fiz' ? 'fiz' : 'ur';
+
+    // Находим кнопку таба и программно кликаем по ней
+    const tabBtn = document.querySelector(`.service-tab[data-tab="${tabTarget}"]`);
+    if (tabBtn) {
+      tabBtn.click();
+    }
+
+    // Скроллим к конкретной сетке услуг
+    const gridElement = document.getElementById(targetGridId);
+    if (gridElement) {
+      const navHeight = document.querySelector('nav')?.offsetHeight || 70;
+      const top = gridElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 30;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});

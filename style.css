@@ -237,7 +237,7 @@ nav {
 }
 
 .hero-content {
-
+    padding-top: 5%;
     margin-left: 10%;
     position: relative;
     z-index: 2;
@@ -343,6 +343,43 @@ h1 .accent {
     color: var(--text3);
     text-transform: uppercase;
     letter-spacing: .05em;
+}
+
+/* Якорные кнопки в Hero */
+.hero-anchors {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-anchor-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 2rem;
+  background: transparent;
+  border: 1.5px solid var(--glass-border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'Unbounded', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: rgba(192, 0, 30, 0.08);
+}
+
+.hero-anchor-btn:hover {
+  background: rgba(192, 0, 30, 0.18);
+  border-color: var(--red3);
+  color: var(--red3);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px var(--red-glow);
+}
+
+.hero-anchor-btn:active {
+  transform: translateY(0);
 }
 
 /* SECTIONS */
