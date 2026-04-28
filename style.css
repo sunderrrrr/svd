@@ -1463,6 +1463,52 @@ footer {
     .calc-wrap {
         padding: 1.5rem
     }
+    .hero-content {
+        margin-left: 0;                /* убираем левый отступ на десктопе */
+        padding: 120px 1.5rem 2rem;    /* отступ сверху под шапку + боковые отступы */
+        max-width: 100%;               /* занимаем всю ширину */
+        text-align: center;            /* центрируем текст и элементы */
+        scale: none;                   /* отключаем масштабирование (если было) */
+    }
+
+    .hero-tag {
+        justify-content: center;
+    }
+
+    .hero-cta {
+        justify-content: center;
+        flex-wrap: wrap;               /* разрешаем перенос кнопок */
+    }
+
+    .hero-cta .btn {
+        flex: 1 1 auto;                /* кнопки растягиваются равномерно */
+        text-align: center;
+    }
+
+    .hero-anchors {
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
+    .hero-anchor-btn {
+        flex: 1 1 auto;
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+    }
+
+    /* немного уменьшаем заголовок и подзаголовок, если нужно */
+    h1 {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+
+    .hero-sub {
+        font-size: 0.9rem;
+    }
+
+    /* легкая корректировка базового шрифта, чтобы сайт не выглядел гипертрофированно */
+    html {
+        font-size: 18px;               /* было 21px */
+    }
 }
 
 @media(max-width:480px) {
