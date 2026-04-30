@@ -1,5 +1,4 @@
 const REGIONS = [{ "name": "Астраханская область", "rate": 7695, "docs": 8279, "sum6kw": 46170, "sum15kw": 115425 }, { "name": "Брянская область", "rate": 8540, "docs": 14016.37, "sum6kw": 51240, "sum15kw": 128100 }, { "name": "Владимирская область", "rate": 12000, "docs": 21997.23, "sum6kw": 72000, "sum15kw": 180000 }, { "name": "Волгоградская область", "rate": 10124.56, "docs": 12628.72, "sum6kw": 60747.36, "sum15kw": 151868.4 }, { "name": "Воронежская область", "rate": 7844, "docs": 7154.9, "sum6kw": 47064, "sum15kw": 117660 }, { "name": "Ивановская область", "rate": 6522.09, "docs": 12366.98, "sum6kw": 39132.54, "sum15kw": 97831.35 }, { "name": "Казань Республика Татарстан", "rate": 7600, "docs": 33912, "sum6kw": 45600, "sum15kw": 114000 }, { "name": "Калининградская область", "rate": 12801.82, "docs": 23405.69, "sum6kw": 76810.92, "sum15kw": 192027.3 }, { "name": "Калужская область", "rate": 8740, "docs": 25098.71, "sum6kw": 52440, "sum15kw": 131100 }, { "name": "Кировская область", "rate": 7800, "docs": 25710, "sum6kw": 46800, "sum15kw": 117000 }, { "name": "Костромская область", "rate": 6522.09, "docs": 12436.31, "sum6kw": 39132.54, "sum15kw": 97831.35 }, { "name": "Краснодарский край", "rate": 11470, "docs": 17363.37, "sum6kw": 68820, "sum15kw": 172050 }, { "name": "Курская область", "rate": 9939, "docs": 18853, "sum6kw": 59634, "sum15kw": 149085 }, { "name": "Ленинградская область", "rate": 11910, "docs": 30065, "sum6kw": 71460, "sum15kw": 178650 }, { "name": "Московская область", "rate": 23859.53, "docs": 16663.41, "sum6kw": 143157.18, "sum15kw": 357892.95 }, { "name": "Нижегородская область (Дзержинск)", "rate": 9441, "docs": 19148.82, "sum6kw": 56646, "sum15kw": 141615 }, { "name": "Новосибирская область", "rate": 6522, "docs": 42322, "sum6kw": 39132, "sum15kw": 97830 }, { "name": "Омская область", "rate": 10540, "docs": 35491.79, "sum6kw": 63240, "sum15kw": 158100 }, { "name": "Оренбургская область", "rate": 6519.7, "docs": 19079.77, "sum6kw": 39118.2, "sum15kw": 97795.5 }, { "name": "Пензенская область", "rate": 8224.57, "docs": 8761.63, "sum6kw": 49347.42, "sum15kw": 123368.55 }, { "name": "Псковская область", "rate": 8635.02, "docs": 21987.13, "sum6kw": 51810.12, "sum15kw": 129525.3 }, { "name": "Республика Коми", "rate": 10000, "docs": 30393.54, "sum6kw": 60000, "sum15kw": 150000 }, { "name": "Ростовская область", "rate": 9981.25, "docs": 10710.29, "sum6kw": 59887.5, "sum15kw": 149718.75 }, { "name": "Рязанская область", "rate": 25178.99, "docs": 24827.68, "sum6kw": 151073.94, "sum15kw": 377684.85 }, { "name": "Самарская область (Тольятти)", "rate": 13039, "docs": 18799.11, "sum6kw": 78234, "sum15kw": 195585 }, { "name": "Саратовская область", "rate": 6265.82, "docs": 21702.63, "sum6kw": 37594.92, "sum15kw": 93987.3 }, { "name": "Свердловская область", "rate": 10000, "docs": 20024, "sum6kw": 60000, "sum15kw": 150000 }, { "name": "Смоленская область", "rate": 9400, "docs": 10950, "sum6kw": 56400, "sum15kw": 141000 }, { "name": "Тамбовская область", "rate": 6630.79, "docs": 9566.54, "sum6kw": 39784.74, "sum15kw": 99461.85 }, { "name": "Тверская область", "rate": 10262.39, "docs": 21434.86, "sum6kw": 61574.34, "sum15kw": 153935.85 }, { "name": "Томская область", "rate": 7378, "docs": 16766.03, "sum6kw": 44268, "sum15kw": 110670 }, { "name": "Тульская область", "rate": 10822.82, "docs": 26057.58, "sum6kw": 64936.92, "sum15kw": 162342.3 }, { "name": "Тюменская область", "rate": 6522.09, "docs": 11055, "sum6kw": 39132.54, "sum15kw": 97831.35 }, { "name": "Ульяновская область", "rate": 8471.2, "docs": 13510, "sum6kw": 50827.2, "sum15kw": 127068 }, { "name": "Уфа Республика Башкортостан", "rate": 6600, "docs": 15273.71, "sum6kw": 39600, "sum15kw": 99000 }, { "name": "Челябинская область", "rate": 13044.18, "docs": 19719.53, "sum6kw": 78265.08, "sum15kw": 195662.7 }, { "name": "Ярославская область", "rate": 8001, "docs": 18630.69, "sum6kw": 48006, "sum15kw": 120015 }, { "name": "Республика Калмыкия (Элиста)", "rate": 7227, "docs": 8324.33, "sum6kw": 43362, "sum15kw": 108405 }];
-
 let currentType = 'fiz';
 let activePreset = null;
 let currentCalcMode = 'connect';
@@ -98,23 +97,35 @@ function setCalcMode(mode) {
     const claimFields = document.getElementById('claim-fields');
     const rowDistance = document.getElementById('row-distance');
     const rowPhase = document.getElementById('row-phase');
-    const rowClaimPercent = document.getElementById('row-claim-percent');
+    const rowRate = document.getElementById('row-rate');
+    const rowClaimPenalty = document.getElementById('row-claim-penalty');
+    const rowClaimMoral = document.getElementById('row-claim-moral');
+    const rowClaimFine = document.getElementById('row-claim-fine');
     const totalLabel = document.getElementById('total-label');
+    const kwLabel = document.getElementById('kw-label');
 
     if (mode === 'connect') {
         connectFields.style.display = '';
         claimFields.style.display = 'none';
         rowDistance.style.display = '';
         rowPhase.style.display = '';
-        rowClaimPercent.style.display = 'none';
+        rowRate.style.display = '';
+        rowClaimPenalty.style.display = 'none';
+        rowClaimMoral.style.display = 'none';
+        rowClaimFine.style.display = 'none';
         totalLabel.textContent = 'Итого ~ ';
+        kwLabel.textContent = 'Мощность';
     } else {
         connectFields.style.display = 'none';
         claimFields.style.display = '';
         rowDistance.style.display = 'none';
         rowPhase.style.display = 'none';
-        rowClaimPercent.style.display = '';
-        totalLabel.textContent = 'Примерная сумма иска ~ ';
+        rowRate.style.display = 'none';
+        rowClaimPenalty.style.display = '';
+        rowClaimMoral.style.display = '';
+        rowClaimFine.style.display = '';
+        totalLabel.textContent = 'ИТОГО к взысканию ~ ';
+        kwLabel.textContent = 'Дни просрочки';
     }
     calcUpdate();
 }
@@ -141,12 +152,17 @@ function calcUpdate() {
     const rDistance = document.getElementById('r-distance');
     const rPhase = document.getElementById('r-phase');
     const rDuty = document.getElementById('r-duty');
-    const rLawyer = document.getElementById('r-lawyer');
     const rTotal = document.getElementById('r-total');
     const rHint = document.getElementById('r-hint');
-    const rClaimPercent = document.getElementById('r-claim-percent');
+    const rClaimPenalty = document.getElementById('r-claim-penalty');
+    const rClaimMoral = document.getElementById('r-claim-moral');
+    const rClaimFine = document.getElementById('r-claim-fine');
     const rowDistance = document.getElementById('row-distance');
     const rowPhase = document.getElementById('row-phase');
+    const rowRate = document.getElementById('row-rate');
+    const kwLabel = document.getElementById('kw-label');
+    const rateLabel = document.getElementById('rate-label');
+    const dutyLabel = document.getElementById('duty-label');
 
     if (ri === '') {
         rRegion.textContent = 'не выбран';
@@ -169,7 +185,6 @@ function calcUpdate() {
             rDistance.textContent = '—';
             rPhase.textContent = '—';
             rDuty.textContent = '—';
-            rLawyer.textContent = '—';
             rTotal.textContent = '—';
             rHint.textContent = 'Введите мощность или выберите пресет.';
             return;
@@ -180,11 +195,10 @@ function calcUpdate() {
         const effectiveRate = baseRate * phaseCoeff;
         let duty = effectiveRate * kw;
         let distanceSurcharge = 0;
-        if (distance > 500) {
-            distanceSurcharge = (distance - 500) * 500;
+        if (distance > 15) {
+            distanceSurcharge = (distance - 15) * 500;
             duty += distanceSurcharge;
         }
-        const lawyerFee = 0;
         const total = duty;
 
         rKw.textContent = kw + ' кВт';
@@ -192,42 +206,67 @@ function calcUpdate() {
         rDistance.textContent = distanceSurcharge > 0 ? fmt(distanceSurcharge) : '0 ₽';
         rPhase.textContent = phase === '3' ? '3 фазы (×1.2)' : '1 фаза (×1.0)';
         rDuty.textContent = fmt(duty);
-        //rLawyer.textContent = fmt(lawyerFee);
         rTotal.textContent = '~' + fmt(total);
-        rHint.textContent = 'Госпошлина + услуги юриста. Точная сумма после консультации. Оплата в 3 этапа.';
+        rHint.textContent = 'Приблизтельная стоимость гос. пошлины. Точная сумма после консультации. Поэтапная оплата';
         rTotal.style.color = 'var(--red3)';
-        rClaimPercent.textContent = '—';
+        rClaimPenalty.textContent = '—';
+        rClaimMoral.textContent = '—';
+        rClaimFine.textContent = '—';
+        kwLabel.textContent = 'Мощность';
+        rateLabel.textContent = 'Ставка за кВт';
+        dutyLabel.textContent = 'Итоговая гос. пошлина';
+        rowDistance.style.display = '';
+        rowPhase.style.display = '';
+        rowRate.style.display = '';
     } else {
-        const kw = parseFloat(document.getElementById('claim-kw').value);
-        if (!kw || kw <= 0) {
+        const contractDateStr = document.getElementById('claim-contract-date').value;
+        const paidAmount = parseFloat(document.getElementById('claim-paid-amount').value) || 0;
+        const calcDateStr = document.getElementById('claim-calc-date').value;
+
+        kwLabel.textContent = 'Дни просрочки';
+        rateLabel.textContent = 'Дата договора';
+        dutyLabel.textContent = 'Оплаченная сумма';
+        rowDistance.style.display = 'none';
+        rowPhase.style.display = 'none';
+        rowRate.style.display = 'none';
+
+        if (!contractDateStr || !calcDateStr || paidAmount <= 0) {
             rKw.textContent = '—';
             rRate.textContent = '—';
             rDistance.textContent = '—';
             rPhase.textContent = '—';
             rDuty.textContent = '—';
-            rLawyer.textContent = '—';
+            rClaimPenalty.textContent = '—';
+            rClaimMoral.textContent = '—';
+            rClaimFine.textContent = '—';
             rTotal.textContent = '—';
-            rClaimPercent.textContent = '—';
-            rHint.textContent = 'Введите мощность объекта для оценки суммы иска.';
+            rHint.textContent = 'Заполните дату заключения договора, сумму и дату расчёта.';
             return;
         }
-        const baseRate = reg.rate;
-        const estimatedDuty = baseRate * kw;
-        let percent = 0.2;
-        if (document.getElementById('claim-violation').value === 'delay') percent = 0.15;
-        if (document.getElementById('claim-violation').value === 'refusal') percent = 0.25;
-        const claimAmount = estimatedDuty * percent;
 
-        rKw.textContent = kw + ' кВт';
-        rRate.textContent = fmt(baseRate) + '/кВт';
-        rDuty.textContent = fmt(estimatedDuty);
-        rLawyer.textContent = 'от ' + fmt(claimAmount * 0.3);
-        rClaimPercent.textContent = (percent * 100).toFixed(0) + '%';
-        rTotal.textContent = '~' + fmt(claimAmount);
-        rHint.textContent = 'Ориентировочная сумма иска. Точный расчёт после консультации.';
+        const contractDate = new Date(contractDateStr);
+        const contractDays = 180;
+        const firstDayDefault = new Date(contractDate);
+        firstDayDefault.setDate(firstDayDefault.getDate() + contractDays);
+        const calcDate = new Date(calcDateStr);
+        const overdueDays = Math.max(0, Math.floor((calcDate - firstDayDefault) / (1000 * 60 * 60 * 24)));
+
+        const penalty = (paidAmount * 0.0025) * (overdueDays + 60);
+        const moralHarm = 5000;
+        const consumerFine = (penalty + moralHarm) / 2;
+        const totalClaim = penalty + moralHarm + consumerFine;
+
+        rKw.textContent = overdueDays + ' дн.';
+        rRate.textContent = contractDateStr.split('-').reverse().join('.');
+        rDistance.textContent = '';
+        rPhase.textContent = '';
+        rDuty.textContent = fmt(paidAmount);
+        rClaimPenalty.textContent = fmt(penalty);
+        rClaimMoral.textContent = fmt(moralHarm);
+        rClaimFine.textContent = fmt(consumerFine);
+        rTotal.textContent = '~' + fmt(totalClaim);
+        rHint.textContent = 'Штраф: 0,25% × ' + fmt(paidAmount) + ' × (' + overdueDays + ' + 60) дн.';
         rTotal.style.color = 'var(--red3)';
-        rowDistance.style.display = 'none';
-        rowPhase.style.display = 'none';
     }
 }
 
@@ -323,19 +362,16 @@ document.querySelectorAll('.services-grid, .steps-track, .why-grid, .pricing-gri
     }
 })();
 
-// Якорные кнопки: скролл к услугам с включением нужной вкладки
 document.querySelectorAll('.hero-anchor-btn').forEach(btn => {
   btn.addEventListener('click', function() {
-    const targetGridId = this.dataset.scrollTo; // 'services-fiz' или 'services-ur'
+    const targetGridId = this.dataset.scrollTo;
     const tabTarget = targetGridId === 'services-fiz' ? 'fiz' : 'ur';
 
-    // Находим кнопку таба и программно кликаем по ней
     const tabBtn = document.querySelector(`.service-tab[data-tab="${tabTarget}"]`);
     if (tabBtn) {
       tabBtn.click();
     }
 
-    // Скроллим к конкретной сетке услуг
     const gridElement = document.getElementById(targetGridId);
     if (gridElement) {
       const navHeight = document.querySelector('nav')?.offsetHeight || 70;
