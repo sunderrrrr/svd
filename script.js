@@ -124,7 +124,7 @@ function setCalcMode(mode) {
         rowClaimPenalty.style.display = '';
         rowClaimMoral.style.display = '';
         rowClaimFine.style.display = '';
-        totalLabel.textContent = 'ИТОГО к взысканию ~ ';
+        totalLabel.textContent = 'К взысканию ~ ';
         kwLabel.textContent = 'Дни просрочки';
     }
     calcUpdate();
@@ -251,21 +251,31 @@ function calcUpdate() {
         const calcDate = new Date(calcDateStr);
         const overdueDays = Math.max(0, Math.floor((calcDate - firstDayDefault) / (1000 * 60 * 60 * 24)));
 
-        const penalty = (paidAmount * 0.0025) * (overdueDays + 60);
-        const moralHarm = 5000;
-        const consumerFine = (penalty + moralHarm) / 2;
-        const totalClaim = penalty + moralHarm + consumerFine;
+        if (currentType === 'ip') {
+            const penalty = (paidAmount * 0.0025) * (overdueDays + 60);
+            rKw.textContent = overdueDays + ' дн.';
+            rRate.textContent = contractDateStr.split('-').reverse().join('.');
+            rDuty.textContent = fmt(paidAmount);
+            rClaimPenalty.textContent = fmt(penalty);
+            rClaimMoral.textContent = 'не взыскивается';
+            rClaimFine.textContent = 'не взыскивается';
+            rTotal.textContent = '~' + fmt(penalty);
+            rHint.textContent = 'Штраф: 0,25% × ' + fmt(paidAmount) + ' × (' + overdueDays + ' + 60) дн. Для ИП/ООО моральный вред и потребительский штраф не применяются.';
+        } else {
+            const penalty = (paidAmount * 0.0025) * (overdueDays + 60);
+            const moralHarm = 5000;
+            const consumerFine = (penalty + moralHarm) / 2;
+            const totalClaim = penalty + moralHarm + consumerFine;
 
-        rKw.textContent = overdueDays + ' дн.';
-        rRate.textContent = contractDateStr.split('-').reverse().join('.');
-        rDistance.textContent = '';
-        rPhase.textContent = '';
-        rDuty.textContent = fmt(paidAmount);
-        rClaimPenalty.textContent = fmt(penalty);
-        rClaimMoral.textContent = fmt(moralHarm);
-        rClaimFine.textContent = fmt(consumerFine);
-        rTotal.textContent = '~' + fmt(totalClaim);
-        rHint.textContent = 'Штраф: 0,25% × ' + fmt(paidAmount) + ' × (' + overdueDays + ' + 60) дн.';
+            rKw.textContent = overdueDays + ' дн.';
+            rRate.textContent = contractDateStr.split('-').reverse().join('.');
+            rDuty.textContent = fmt(paidAmount);
+            rClaimPenalty.textContent = fmt(penalty);
+            rClaimMoral.textContent = fmt(moralHarm);
+            rClaimFine.textContent = fmt(consumerFine);
+            rTotal.textContent = '~' + fmt(totalClaim);
+            rHint.textContent = 'Штраф: 0,25% × ' + fmt(paidAmount) + ' × (' + overdueDays + ' + 60) дн. + моральный вред + потреб. штраф.';
+        }
         rTotal.style.color = 'var(--red3)';
     }
 }

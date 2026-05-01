@@ -1264,6 +1264,7 @@ h2 {
 }
 
 /* WHY */
+/* WHY */
 #why {
     background: var(--bg)
 }
@@ -1277,12 +1278,33 @@ h2 {
 .why-card {
     padding: 1.5rem;
     border-left: 2px solid rgba(192, 0, 30, 0.25);
-    transition: all .3s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+}
+
+.why-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
 }
 
 .why-card:hover {
     border-color: var(--red3);
     background: rgba(255, 255, 255, 0.02);
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px var(--red-glow);
+}
+
+.why-card:hover::before {
+    transform: scaleX(1);
 }
 
 .why-num {
@@ -1291,6 +1313,12 @@ h2 {
     font-weight: 700;
     color: rgba(192, 0, 30, 0.2);
     margin-bottom: .25rem;
+    transition: all 0.3s ease;
+}
+
+.why-card:hover .why-num {
+    color: rgba(192, 0, 30, 0.35);
+    text-shadow: 0 0 15px var(--red-glow);
 }
 
 .why-title {
@@ -1299,12 +1327,22 @@ h2 {
     color: var(--white);
     margin-bottom: .4rem;
     font-family: 'Unbounded', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.why-card:hover .why-title {
+    color: var(--red3);
 }
 
 .why-desc {
     font-size: .78rem;
     color: var(--text2);
     line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.why-card:hover .why-desc {
+    color: var(--text);
 }
 
 /* CONTACT / FOOTER */
