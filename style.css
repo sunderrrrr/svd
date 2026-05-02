@@ -1907,12 +1907,12 @@ a.btn {
     }
 
     .case-num-val {
-        font-size: clamp(1.1rem, 4.6vw, 1.7rem);
+        font-size: clamp(1rem, 4vw, 1.5rem);
         white-space: nowrap;
     }
 
     .case-arrow {
-        font-size: 2rem;
+        font-size: 1.4rem;
         flex-shrink: 0;
     }
 
