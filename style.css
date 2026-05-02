@@ -1899,3 +1899,29 @@ a.btn {
         transform: translateY(-2px);
     }
 }
+
+@media(max-width:768px) {
+    .case-numbers {
+        flex-wrap: nowrap;
+        gap: 0.75rem;
+    }
+
+    .case-num-val {
+        font-size: clamp(1.1rem, 4.6vw, 1.7rem);
+        white-space: nowrap;
+    }
+
+    .case-arrow {
+        font-size: 2rem;
+        flex-shrink: 0;
+    }
+
+    .case-num {
+        min-width: 0;
+    }
+
+    .case-num-label {
+        font-size: 0.6rem;
+        white-space: nowrap;
+    }
+}
