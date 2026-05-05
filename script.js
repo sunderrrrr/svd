@@ -169,7 +169,6 @@ function triggerServiceAnimation(containerId) {
         cards.forEach(card => card.classList.add('visible'));
     });
 }
-
 function setCalcMode(mode) {
     currentCalcMode = mode;
     document.querySelectorAll('.calc-tab').forEach(tab => {
@@ -180,24 +179,29 @@ function setCalcMode(mode) {
     const claimFields = document.getElementById('claim-fields');
     const resultConnect = document.getElementById('result-connect');
     const resultClaim = document.getElementById('result-claim');
+    const resultFiz = document.getElementById('result-fiz');
+    const resultIp = document.getElementById('result-ip');
     const totalLabel = document.getElementById('total-label');
 
     if (mode === 'connect') {
         if (connectFields) connectFields.style.display = '';
         if (claimFields) claimFields.style.display = 'none';
-        if (resultConnect) resultConnect.style.display = '';
         if (resultClaim) resultClaim.style.display = 'none';
+        // resultFiz/resultIp показываются в calcConnect
         if (totalLabel) totalLabel.textContent = 'Итого ~ ';
+        // Обновляем видимость result-fiz/result-ip
+        if (resultFiz) resultFiz.style.display = currentType === 'fiz' ? '' : 'none';
+        if (resultIp) resultIp.style.display = currentType === 'ip' ? '' : 'none';
     } else {
         if (connectFields) connectFields.style.display = 'none';
         if (claimFields) claimFields.style.display = '';
-        if (resultConnect) resultConnect.style.display = 'none';
+        if (resultFiz) resultFiz.style.display = 'none';
+        if (resultIp) resultIp.style.display = 'none';
         if (resultClaim) resultClaim.style.display = '';
         if (totalLabel) totalLabel.textContent = 'К взысканию ~ ';
     }
     calcUpdate();
 }
-
 function scrollToCalc(mode = 'connect') {
     setCalcMode(mode);
     const el = document.getElementById('calc');
@@ -259,62 +263,71 @@ function calcConnect(reg) {
     if (rDistance) rDistance.textContent = distance + ' м';
     if (rLocality) rLocality.textContent = locality === 'city' ? 'Город' : 'Село';
 
-    // Скрываем оба блока
     if (fizBlock) fizBlock.style.display = 'none';
     if (ipBlock) ipBlock.style.display = 'none';
 
     if (currentType === 'fiz') {
         if (fizBlock) fizBlock.style.display = '';
+
+        // Льготный тариф — значения ПУ
+        const льготный6 = reg.meter1ph;
+        const льготный15 = reg.meter3phDirect;
         
-        // Льготный тариф (без строительства)
+        // Строительный тариф — ставка × мощность
+        const стройка6 = reg.rate * 6;
+        const стройка15 = reg.rate * 15;
+
         const rTariff6 = document.getElementById('r-tariff-6');
         const rTariff15 = document.getElementById('r-tariff-15');
-        if (rTariff6) rTariff6.textContent = fmt(reg.sum6kw);
-        if (rTariff15) rTariff15.textContent = fmt(reg.sum15kw);
+        const rBuild6 = document.getElementById('r-build-6');
+        const rBuild15 = document.getElementById('r-build-15');
+
+        if (rTariff6) rTariff6.textContent = fmt(льготный6);
+        if (rTariff15) rTariff15.textContent = fmt(льготный15);
+        if (rBuild6) rBuild6.textContent = fmt(стройка6);
+        if (rBuild15) rBuild15.textContent = fmt(стройка15);
 
         if (distance > 15) {
             // Строительный тариф
-            const build6 = (reg.docs + reg.meter1ph) * 1.22;
-            const build15 = (reg.docs + reg.meter3phDirect) * 1.22;
-            const rBuild6 = document.getElementById('r-build-6');
-            const rBuild15 = document.getElementById('r-build-15');
-            if (rBuild6) rBuild6.textContent = fmt(build6);
-            if (rBuild15) rBuild15.textContent = fmt(build15);
-            
             if (activePreset === 6) {
-                if (rTotal) { rTotal.textContent = '~' + fmt(build6); rTotal.style.color = 'var(--red3)'; }
+                if (rTotal) { rTotal.textContent = '~' + fmt(стройка6); rTotal.style.color = 'var(--red3)'; }
             } else if (activePreset === 15) {
-                if (rTotal) { rTotal.textContent = '~' + fmt(build15); rTotal.style.color = 'var(--red3)'; }
+                if (rTotal) { rTotal.textContent = '~' + fmt(стройка15); rTotal.style.color = 'var(--red3)'; }
             } else {
                 if (rTotal) rTotal.textContent = '—';
             }
-            if (rHint) rHint.textContent = 'Расстояние > 15 м — строительный тариф. Точная стоимость по телефону.';
+            if (rHint) rHint.textContent = 'Расстояние > 15 м — строительный тариф (ставка × мощность). Точная стоимость по телефону.';
         } else {
             // Льготный тариф
             if (activePreset === 6) {
-                if (rTotal) { rTotal.textContent = '~' + fmt(reg.sum6kw); rTotal.style.color = 'var(--red3)'; }
+                if (rTotal) { rTotal.textContent = '~' + fmt(льготный6); rTotal.style.color = 'var(--red3)'; }
             } else if (activePreset === 15) {
-                if (rTotal) { rTotal.textContent = '~' + fmt(reg.sum15kw); rTotal.style.color = 'var(--red3)'; }
+                if (rTotal) { rTotal.textContent = '~' + fmt(льготный15); rTotal.style.color = 'var(--red3)'; }
             } else {
                 if (rTotal) rTotal.textContent = '—';
             }
-            if (rHint) rHint.textContent = 'Льготный тариф (≤ 15 м). Выберите пресет мощности.';
+            if (rHint) rHint.textContent = 'Льготный тариф (≤ 15 м) — стоимость прибора учёта. Выберите мощность.';
         }
     } else {
         // ИП/ООО
         if (ipBlock) ipBlock.style.display = '';
-        
-        const maxDistance = locality === 'city' ? 200 : 300;
-        const tariff150 = (reg.docs + reg.meter3phSemiIndirect) * 1.22;
-        const rTariff150 = document.getElementById('r-tariff-150');
-        if (rTariff150) rTariff150.textContent = fmt(tariff150);
 
+        const maxDistance = locality === 'city' ? 200 : 300;
+        
         if (distance <= maxDistance) {
+            // Без строительства — ПУ из последней колонки
+            const tariff150 = reg.meter3phSemiIndirect;
+            const rTariff150 = document.getElementById('r-tariff-150');
+            if (rTariff150) rTariff150.textContent = fmt(tariff150);
             if (rTotal) { rTotal.textContent = '~' + fmt(tariff150); rTotal.style.color = 'var(--red3)'; }
             if (rHint) rHint.textContent = `Без строительства (≤ ${maxDistance} м). 150 кВт, 3 фазы.`;
         } else {
+            // Со строительством — ставка × мощность
+            const tariff150 = reg.rate * 150;
+            const rTariff150 = document.getElementById('r-tariff-150');
+            if (rTariff150) rTariff150.textContent = fmt(tariff150);
             if (rTotal) { rTotal.textContent = '~' + fmt(tariff150); rTotal.style.color = 'var(--red3)'; }
-            if (rHint) rHint.textContent = `Расстояние > ${maxDistance} м — строительный тариф. Точная стоимость по телефону. 150 кВт, 3 фазы.`;
+            if (rHint) rHint.textContent = `Со строительством (> ${maxDistance} м). Ставка × 150 кВт. Точная стоимость по телефону.`;
         }
     }
 }
