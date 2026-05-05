@@ -1,25 +1,141 @@
-const REGIONS = [{ "name": "Астраханская область", "rate": 7695, "docs": 8279, "sum6kw": 46170, "sum15kw": 115425 }, { "name": "Брянская область", "rate": 8540, "docs": 14016.37, "sum6kw": 51240, "sum15kw": 128100 }, { "name": "Владимирская область", "rate": 12000, "docs": 21997.23, "sum6kw": 72000, "sum15kw": 180000 }, { "name": "Волгоградская область", "rate": 10124.56, "docs": 12628.72, "sum6kw": 60747.36, "sum15kw": 151868.4 }, { "name": "Воронежская область", "rate": 7844, "docs": 7154.9, "sum6kw": 47064, "sum15kw": 117660 }, { "name": "Ивановская область", "rate": 6522.09, "docs": 12366.98, "sum6kw": 39132.54, "sum15kw": 97831.35 }, { "name": "Казань Республика Татарстан", "rate": 7600, "docs": 33912, "sum6kw": 45600, "sum15kw": 114000 }, { "name": "Калининградская область", "rate": 12801.82, "docs": 23405.69, "sum6kw": 76810.92, "sum15kw": 192027.3 }, { "name": "Калужская область", "rate": 8740, "docs": 25098.71, "sum6kw": 52440, "sum15kw": 131100 }, { "name": "Кировская область", "rate": 7800, "docs": 25710, "sum6kw": 46800, "sum15kw": 117000 }, { "name": "Костромская область", "rate": 6522.09, "docs": 12436.31, "sum6kw": 39132.54, "sum15kw": 97831.35 }, { "name": "Краснодарский край", "rate": 11470, "docs": 17363.37, "sum6kw": 68820, "sum15kw": 172050 }, { "name": "Курская область", "rate": 9939, "docs": 18853, "sum6kw": 59634, "sum15kw": 149085 }, { "name": "Ленинградская область", "rate": 11910, "docs": 30065, "sum6kw": 71460, "sum15kw": 178650 }, { "name": "Московская область", "rate": 23859.53, "docs": 16663.41, "sum6kw": 143157.18, "sum15kw": 357892.95 }, { "name": "Нижегородская область (Дзержинск)", "rate": 9441, "docs": 19148.82, "sum6kw": 56646, "sum15kw": 141615 }, { "name": "Новосибирская область", "rate": 6522, "docs": 42322, "sum6kw": 39132, "sum15kw": 97830 }, { "name": "Омская область", "rate": 10540, "docs": 35491.79, "sum6kw": 63240, "sum15kw": 158100 }, { "name": "Оренбургская область", "rate": 6519.7, "docs": 19079.77, "sum6kw": 39118.2, "sum15kw": 97795.5 }, { "name": "Пензенская область", "rate": 8224.57, "docs": 8761.63, "sum6kw": 49347.42, "sum15kw": 123368.55 }, { "name": "Псковская область", "rate": 8635.02, "docs": 21987.13, "sum6kw": 51810.12, "sum15kw": 129525.3 }, { "name": "Республика Коми", "rate": 10000, "docs": 30393.54, "sum6kw": 60000, "sum15kw": 150000 }, { "name": "Ростовская область", "rate": 9981.25, "docs": 10710.29, "sum6kw": 59887.5, "sum15kw": 149718.75 }, { "name": "Рязанская область", "rate": 25178.99, "docs": 24827.68, "sum6kw": 151073.94, "sum15kw": 377684.85 }, { "name": "Самарская область (Тольятти)", "rate": 13039, "docs": 18799.11, "sum6kw": 78234, "sum15kw": 195585 }, { "name": "Саратовская область", "rate": 6265.82, "docs": 21702.63, "sum6kw": 37594.92, "sum15kw": 93987.3 }, { "name": "Свердловская область", "rate": 10000, "docs": 20024, "sum6kw": 60000, "sum15kw": 150000 }, { "name": "Смоленская область", "rate": 9400, "docs": 10950, "sum6kw": 56400, "sum15kw": 141000 }, { "name": "Тамбовская область", "rate": 6630.79, "docs": 9566.54, "sum6kw": 39784.74, "sum15kw": 99461.85 }, { "name": "Тверская область", "rate": 10262.39, "docs": 21434.86, "sum6kw": 61574.34, "sum15kw": 153935.85 }, { "name": "Томская область", "rate": 7378, "docs": 16766.03, "sum6kw": 44268, "sum15kw": 110670 }, { "name": "Тульская область", "rate": 10822.82, "docs": 26057.58, "sum6kw": 64936.92, "sum15kw": 162342.3 }, { "name": "Тюменская область", "rate": 6522.09, "docs": 11055, "sum6kw": 39132.54, "sum15kw": 97831.35 }, { "name": "Ульяновская область", "rate": 8471.2, "docs": 13510, "sum6kw": 50827.2, "sum15kw": 127068 }, { "name": "Уфа Республика Башкортостан", "rate": 6600, "docs": 15273.71, "sum6kw": 39600, "sum15kw": 99000 }, { "name": "Челябинская область", "rate": 13044.18, "docs": 19719.53, "sum6kw": 78265.08, "sum15kw": 195662.7 }, { "name": "Ярославская область", "rate": 8001, "docs": 18630.69, "sum6kw": 48006, "sum15kw": 120015 }, { "name": "Республика Калмыкия (Элиста)", "rate": 7227, "docs": 8324.33, "sum6kw": 43362, "sum15kw": 108405 }];
+let REGIONS = [];
 let currentType = 'fiz';
 let activePreset = null;
 let currentCalcMode = 'connect';
 
-const sel = document.getElementById('calc-region');
-REGIONS.forEach((r, i) => {
-    const o = document.createElement('option');
-    o.value = i;
-    o.textContent = r.name;
-    sel.appendChild(o);
-});
-sel.addEventListener('change', calcUpdate);
+// Загрузка регионов из JSON
+fetch('regions.json')
+    .then(response => response.json())
+    .then(data => {
+        REGIONS = data;
+        populateRegionSelect();
+        if (document.getElementById('calc-region').value !== '') {
+            calcUpdate();
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка загрузки регионов:', error);
+        document.getElementById('calc-region').innerHTML = '<option value="">Ошибка загрузки</option>';
+    });
 
-function fmt(n) { return Math.round(n).toLocaleString('ru-RU') + ' ₽' }
+function populateRegionSelect() {
+    const sel = document.getElementById('calc-region');
+    sel.innerHTML = '<option value="">Выберите регион</option>';
+    REGIONS.forEach((r, i) => {
+        const o = document.createElement('option');
+        o.value = i;
+        o.textContent = r.name;
+        sel.appendChild(o);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sel = document.getElementById('calc-region');
+    if (sel) sel.addEventListener('change', calcUpdate);
+    initEventListeners();
+});
+
+function initEventListeners() {
+    document.getElementById('type-fiz')?.addEventListener('click', () => setType('fiz'));
+    document.getElementById('type-ip')?.addEventListener('click', () => setType('ip'));
+
+    document.querySelectorAll('.preset-pill').forEach(pill => {
+        pill.addEventListener('click', function() {
+            const kw = parseInt(this.dataset.kw);
+            setPreset(this, kw);
+        });
+    });
+
+    document.querySelectorAll('.calc-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            setCalcMode(this.dataset.calcMode);
+        });
+    });
+
+    document.querySelectorAll('.service-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const target = this.dataset.tab;
+            document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            const fizGrid = document.getElementById('services-fiz');
+            const urGrid = document.getElementById('services-ur');
+            if (target === 'fiz') {
+                fizGrid.style.display = '';
+                urGrid.style.display = 'none';
+                triggerServiceAnimation('services-fiz');
+                setType('fiz');
+            } else {
+                fizGrid.style.display = 'none';
+                urGrid.style.display = '';
+                triggerServiceAnimation('services-ur');
+                setType('ip');
+            }
+        });
+    });
+
+    document.querySelectorAll('.hero-anchor-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetGridId = this.dataset.scrollTo;
+            const tabTarget = targetGridId === 'services-fiz' ? 'fiz' : 'ur';
+            const tabBtn = document.querySelector(`.service-tab[data-tab="${tabTarget}"]`);
+            if (tabBtn) tabBtn.click();
+            const gridElement = document.getElementById(targetGridId);
+            if (gridElement) {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 70;
+                const top = gridElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 200;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+            setCalcMode('connect');
+           
+        });
+    });
+
+    document.querySelectorAll('.service-cta-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#calc-containter') {
+                e.preventDefault();
+                const onclickAttr = this.getAttribute('onclick');
+                if (onclickAttr && onclickAttr.includes('claim')) {
+                    scrollToCalc('claim');
+                } else {
+                    scrollToCalc('connect');
+                }
+            }
+        });
+    });
+
+    document.getElementById('calc-distance')?.addEventListener('input', calcUpdate);
+    document.getElementById('calc-locality')?.addEventListener('change', calcUpdate);
+
+    document.getElementById('claim-contract-date')?.addEventListener('input', calcUpdate);
+    document.getElementById('claim-paid-amount')?.addEventListener('input', calcUpdate);
+    document.getElementById('claim-calc-date')?.addEventListener('input', calcUpdate);
+
+    const cookieConsent = document.getElementById('cookieConsent');
+    const acceptBtn = document.getElementById('cookieAcceptBtn');
+    const cookieAccepted = localStorage.getItem('cookieConsentAccepted');
+    if (cookieAccepted === 'true' && cookieConsent) cookieConsent.style.display = 'none';
+    acceptBtn?.addEventListener('click', function() {
+        localStorage.setItem('cookieConsentAccepted', 'true');
+        cookieConsent?.classList.add('hide');
+        setTimeout(() => { if (cookieConsent) cookieConsent.style.display = 'none'; }, 400);
+    });
+}
+
+function fmt(n) { return Math.round(n).toLocaleString('ru-RU') + ' ₽'; }
 
 function setType(t) {
     currentType = t;
-    document.getElementById('type-fiz').classList.toggle('active', t === 'fiz');
-    document.getElementById('type-ip').classList.toggle('active', t === 'ip');
-    const p150 = document.querySelector('[data-kw="150"]');
-    if (p150) p150.style.display = 'inline-flex';
+    document.getElementById('type-fiz')?.classList.toggle('active', t === 'fiz');
+    document.getElementById('type-ip')?.classList.toggle('active', t === 'ip');
+    
+    const fizPresets = document.getElementById('preset-pills-fiz');
+    const ipPresets = document.getElementById('preset-pills-ip');
+    if (fizPresets) fizPresets.style.display = t === 'fiz' ? '' : 'none';
+    if (ipPresets) ipPresets.style.display = t === 'ip' ? '' : 'none';
+    
+    clearPreset();
     calcUpdate();
 }
 
@@ -27,13 +143,6 @@ function setPreset(el, kw) {
     document.querySelectorAll('.preset-pill').forEach(p => p.classList.remove('active'));
     el.classList.add('active');
     activePreset = kw;
-    document.getElementById('calc-kw').value = kw;
-
-    if (kw >= 150) {
-        setType('ip');
-    } else {
-        setType('fiz');
-    }
     calcUpdate();
 }
 
@@ -47,94 +156,47 @@ function triggerServiceAnimation(containerId) {
     if (!container) return;
     const cards = container.querySelectorAll('.service-card');
     if (!cards.length) return;
-
     cards.forEach(card => {
         card.classList.remove('visible');
         card.style.transition = 'none';
     });
-
     container.offsetHeight;
-
     cards.forEach((card, i) => {
         card.style.transition = '';
         card.style.transitionDelay = (i * 0.1) + 's';
     });
-
     requestAnimationFrame(() => {
         cards.forEach(card => card.classList.add('visible'));
     });
 }
-
-document.querySelectorAll('.service-tab').forEach(tab => {
-    tab.addEventListener('click', function() {
-        const target = this.dataset.tab;
-        document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-
-        const fizGrid = document.getElementById('services-fiz');
-        const urGrid = document.getElementById('services-ur');
-
-        if (target === 'fiz') {
-            fizGrid.style.display = '';
-            urGrid.style.display = 'none';
-            triggerServiceAnimation('services-fiz');
-            setType('fiz');
-        } else {
-            fizGrid.style.display = 'none';
-            urGrid.style.display = '';
-            triggerServiceAnimation('services-ur');
-            setType('ip');
-        }
-    });
-});
 
 function setCalcMode(mode) {
     currentCalcMode = mode;
     document.querySelectorAll('.calc-tab').forEach(tab => {
         tab.classList.toggle('active', tab.dataset.calcMode === mode);
     });
+    
     const connectFields = document.getElementById('connect-fields');
     const claimFields = document.getElementById('claim-fields');
-    const rowDistance = document.getElementById('row-distance');
-    const rowPhase = document.getElementById('row-phase');
-    const rowRate = document.getElementById('row-rate');
-    const rowClaimPenalty = document.getElementById('row-claim-penalty');
-    const rowClaimMoral = document.getElementById('row-claim-moral');
-    const rowClaimFine = document.getElementById('row-claim-fine');
+    const resultConnect = document.getElementById('result-connect');
+    const resultClaim = document.getElementById('result-claim');
     const totalLabel = document.getElementById('total-label');
-    const kwLabel = document.getElementById('kw-label');
 
     if (mode === 'connect') {
-        connectFields.style.display = '';
-        claimFields.style.display = 'none';
-        rowDistance.style.display = '';
-        rowPhase.style.display = '';
-        rowRate.style.display = '';
-        rowClaimPenalty.style.display = 'none';
-        rowClaimMoral.style.display = 'none';
-        rowClaimFine.style.display = 'none';
-        totalLabel.textContent = 'Итого ~ ';
-        kwLabel.textContent = 'Мощность';
+        if (connectFields) connectFields.style.display = '';
+        if (claimFields) claimFields.style.display = 'none';
+        if (resultConnect) resultConnect.style.display = '';
+        if (resultClaim) resultClaim.style.display = 'none';
+        if (totalLabel) totalLabel.textContent = 'Итого ~ ';
     } else {
-        connectFields.style.display = 'none';
-        claimFields.style.display = '';
-        rowDistance.style.display = 'none';
-        rowPhase.style.display = 'none';
-        rowRate.style.display = 'none';
-        rowClaimPenalty.style.display = '';
-        rowClaimMoral.style.display = '';
-        rowClaimFine.style.display = '';
-        totalLabel.textContent = 'К взысканию ~ ';
-        kwLabel.textContent = 'Дни просрочки';
+        if (connectFields) connectFields.style.display = 'none';
+        if (claimFields) claimFields.style.display = '';
+        if (resultConnect) resultConnect.style.display = 'none';
+        if (resultClaim) resultClaim.style.display = '';
+        if (totalLabel) totalLabel.textContent = 'К взысканию ~ ';
     }
     calcUpdate();
 }
-
-document.querySelectorAll('.calc-tab').forEach(tab => {
-    tab.addEventListener('click', function() {
-        setCalcMode(this.dataset.calcMode);
-    });
-});
 
 function scrollToCalc(mode = 'connect') {
     setCalcMode(mode);
@@ -145,197 +207,224 @@ function scrollToCalc(mode = 'connect') {
 }
 
 function calcUpdate() {
-    const ri = sel.value;
+    const ri = document.getElementById('calc-region')?.value;
     const rRegion = document.getElementById('r-region');
-    const rKw = document.getElementById('r-kw');
-    const rRate = document.getElementById('r-rate');
-    const rDistance = document.getElementById('r-distance');
-    const rPhase = document.getElementById('r-phase');
-    const rDuty = document.getElementById('r-duty');
-    const rTotal = document.getElementById('r-total');
     const rHint = document.getElementById('r-hint');
-    const rClaimPenalty = document.getElementById('r-claim-penalty');
-    const rClaimMoral = document.getElementById('r-claim-moral');
-    const rClaimFine = document.getElementById('r-claim-fine');
-    const rowDistance = document.getElementById('row-distance');
-    const rowPhase = document.getElementById('row-phase');
-    const rowRate = document.getElementById('row-rate');
-    const kwLabel = document.getElementById('kw-label');
-    const rateLabel = document.getElementById('rate-label');
-    const dutyLabel = document.getElementById('duty-label');
 
-    if (ri === '') {
-        rRegion.textContent = 'не выбран';
-        rRegion.style.color = 'var(--text3)';
+    if (!ri || ri === '') {
+        if (rRegion) {
+            rRegion.textContent = 'не выбран';
+            rRegion.style.color = 'var(--text3)';
+        }
+        clearResults();
         return;
     }
 
     const reg = REGIONS[parseInt(ri)];
-    rRegion.textContent = reg.name.length > 22 ? reg.name.substring(0, 22) + '…' : reg.name;
-    rRegion.style.color = 'var(--text)';
+    if (!reg) return;
+    
+    if (rRegion) {
+        rRegion.textContent = reg.name.length > 22 ? reg.name.substring(0, 22) + '…' : reg.name;
+        rRegion.style.color = 'var(--text)';
+    }
 
     if (currentCalcMode === 'connect') {
-        const kw = parseFloat(document.getElementById('calc-kw').value);
-        const distance = parseFloat(document.getElementById('calc-distance').value) || 0;
-        const phase = document.getElementById('calc-phase').value;
-
-        if (!kw || kw <= 0) {
-            rKw.textContent = '—';
-            rRate.textContent = '—';
-            rDistance.textContent = '—';
-            rPhase.textContent = '—';
-            rDuty.textContent = '—';
-            rTotal.textContent = '—';
-            rHint.textContent = 'Введите мощность или выберите пресет.';
-            return;
-        }
-
-        const baseRate = reg.rate;
-        const phaseCoeff = phase === '3' ? 1.2 : 1.0;
-        const effectiveRate = baseRate * phaseCoeff;
-        let duty = effectiveRate * kw;
-        let distanceSurcharge = 0;
-        if (distance > 15) {
-            distanceSurcharge = (distance - 15) * 500;
-            duty += distanceSurcharge;
-        }
-        const total = duty;
-
-        rKw.textContent = kw + ' кВт';
-        rRate.textContent = fmt(effectiveRate) + '/кВт';
-        rDistance.textContent = distanceSurcharge > 0 ? fmt(distanceSurcharge) : '0 ₽';
-        rPhase.textContent = phase === '3' ? '3 фазы (×1.2)' : '1 фаза (×1.0)';
-        rDuty.textContent = fmt(duty);
-        rTotal.textContent = '~' + fmt(total);
-        rHint.textContent = 'Приблизтельная стоимость гос. пошлины. Точная сумма после консультации. Поэтапная оплата';
-        rTotal.style.color = 'var(--red3)';
-        rClaimPenalty.textContent = '—';
-        rClaimMoral.textContent = '—';
-        rClaimFine.textContent = '—';
-        kwLabel.textContent = 'Мощность';
-        rateLabel.textContent = 'Ставка за кВт';
-        dutyLabel.textContent = 'Итоговая гос. пошлина';
-        rowDistance.style.display = '';
-        rowPhase.style.display = '';
-        rowRate.style.display = '';
+        calcConnect(reg);
     } else {
-        const contractDateStr = document.getElementById('claim-contract-date').value;
-        const paidAmount = parseFloat(document.getElementById('claim-paid-amount').value) || 0;
-        const calcDateStr = document.getElementById('claim-calc-date').value;
-
-        kwLabel.textContent = 'Дни просрочки';
-        rateLabel.textContent = 'Дата договора';
-        dutyLabel.textContent = 'Оплаченная сумма';
-        rowDistance.style.display = 'none';
-        rowPhase.style.display = 'none';
-        rowRate.style.display = 'none';
-
-        if (!contractDateStr || !calcDateStr || paidAmount <= 0) {
-            rKw.textContent = '—';
-            rRate.textContent = '—';
-            rDistance.textContent = '—';
-            rPhase.textContent = '—';
-            rDuty.textContent = '—';
-            rClaimPenalty.textContent = '—';
-            rClaimMoral.textContent = '—';
-            rClaimFine.textContent = '—';
-            rTotal.textContent = '—';
-            rHint.textContent = 'Заполните дату заключения договора, сумму и дату расчёта.';
-            return;
-        }
-
-        const contractDate = new Date(contractDateStr);
-        const contractDays = 180;
-        const firstDayDefault = new Date(contractDate);
-        firstDayDefault.setDate(firstDayDefault.getDate() + contractDays);
-        const calcDate = new Date(calcDateStr);
-        const overdueDays = Math.max(0, Math.floor((calcDate - firstDayDefault) / (1000 * 60 * 60 * 24)));
-
-        if (currentType === 'ip') {
-            const penalty = (paidAmount * 0.0025) * (overdueDays + 60);
-            rKw.textContent = overdueDays + ' дн.';
-            rRate.textContent = contractDateStr.split('-').reverse().join('.');
-            rDuty.textContent = fmt(paidAmount);
-            rClaimPenalty.textContent = fmt(penalty);
-            rClaimMoral.textContent = 'не взыскивается';
-            rClaimFine.textContent = 'не взыскивается';
-            rTotal.textContent = '~' + fmt(penalty);
-            rHint.textContent = 'Штраф: 0,25% × ' + fmt(paidAmount) + ' × (' + overdueDays + ' + 60) дн. Для ИП/ООО моральный вред и потребительский штраф не применяются.';
-        } else {
-            const penalty = (paidAmount * 0.0025) * (overdueDays + 60);
-            const moralHarm = 5000;
-            const consumerFine = (penalty + moralHarm) / 2;
-            const totalClaim = penalty + moralHarm + consumerFine;
-
-            rKw.textContent = overdueDays + ' дн.';
-            rRate.textContent = contractDateStr.split('-').reverse().join('.');
-            rDuty.textContent = fmt(paidAmount);
-            rClaimPenalty.textContent = fmt(penalty);
-            rClaimMoral.textContent = fmt(moralHarm);
-            rClaimFine.textContent = fmt(consumerFine);
-            rTotal.textContent = '~' + fmt(totalClaim);
-            rHint.textContent = 'Штраф: 0,25% × ' + fmt(paidAmount) + ' × (' + overdueDays + ' + 60) дн. + моральный вред + потреб. штраф.';
-        }
-        rTotal.style.color = 'var(--red3)';
+        calcClaim();
     }
 }
 
-const canvas = document.getElementById('lightning-canvas');
-const ctx = canvas.getContext('2d');
-
-function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-let bolts = [];
-let lastBolt = 0;
-
-function randomBolt() {
-    const startX = Math.random() * canvas.width;
-    const startY = 0;
-    const endX = startX + (Math.random() - 0.5) * 200;
-    const endY = Math.random() * canvas.height * 0.7;
-    const segments = [];
-    let x = startX, y = startY;
-    const steps = 8 + Math.floor(Math.random() * 8);
-    for (let i = 0; i < steps; i++) {
-        const nx = x + (endX - startX) / steps + (Math.random() - 0.5) * 60;
-        const ny = y + (endY - startY) / steps;
-        segments.push({ x1: x, y1: y, x2: nx, y2: ny });
-        x = nx; y = ny;
-    }
-    return { segments, life: 1, decay: 0.08 + Math.random() * 0.06 };
-}
-
-function drawLightning(ts) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (ts - lastBolt > 2000 + Math.random() * 3000) {
-        bolts.push(randomBolt());
-        if (Math.random() > 0.5) bolts.push(randomBolt());
-        lastBolt = ts;
-    }
-    bolts = bolts.filter(b => {
-        b.life -= b.decay;
-        if (b.life <= 0) return false;
-        b.segments.forEach(s => {
-            ctx.beginPath();
-            ctx.moveTo(s.x1, s.y1);
-            ctx.lineTo(s.x2, s.y2);
-            ctx.strokeStyle = `rgba(255,80,100,${b.life * 0.7})`;
-            ctx.lineWidth = b.life * 1.5;
-            ctx.shadowBlur = 12;
-            ctx.shadowColor = `rgba(192,0,30,${b.life * 0.5})`;
-            ctx.stroke();
-        });
-        return true;
+function clearResults() {
+    const ids = ['r-tariff-6', 'r-tariff-15', 'r-tariff-150-build', 'r-tariff-150-nobuild',
+                 'r-distance', 'r-locality', 'r-total', 'r-claim-penalty', 'r-claim-moral', 'r-claim-fine'];
+    ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '—';
     });
+    const rHint = document.getElementById('r-hint');
+    if (rHint) rHint.textContent = 'Выберите регион и пресет мощности для расчёта.';
+}
+
+function calcConnect(reg) {
+    const distance = parseFloat(document.getElementById('calc-distance')?.value) || 0;
+    const locality = document.getElementById('calc-locality')?.value || 'city';
+    const rDistance = document.getElementById('r-distance');
+    const rLocality = document.getElementById('r-locality');
+    const rTotal = document.getElementById('r-total');
+    const rHint = document.getElementById('r-hint');
+    const fizBlock = document.getElementById('result-fiz');
+    const ipBlock = document.getElementById('result-ip');
+
+    if (rDistance) rDistance.textContent = distance + ' м';
+    if (rLocality) rLocality.textContent = locality === 'city' ? 'Город' : 'Село';
+
+    // Скрываем оба блока
+    if (fizBlock) fizBlock.style.display = 'none';
+    if (ipBlock) ipBlock.style.display = 'none';
+
+    if (currentType === 'fiz') {
+        if (fizBlock) fizBlock.style.display = '';
+        
+        // Льготный тариф (без строительства)
+        const rTariff6 = document.getElementById('r-tariff-6');
+        const rTariff15 = document.getElementById('r-tariff-15');
+        if (rTariff6) rTariff6.textContent = fmt(reg.sum6kw);
+        if (rTariff15) rTariff15.textContent = fmt(reg.sum15kw);
+
+        if (distance > 15) {
+            // Строительный тариф
+            const build6 = (reg.docs + reg.meter1ph) * 1.22;
+            const build15 = (reg.docs + reg.meter3phDirect) * 1.22;
+            const rBuild6 = document.getElementById('r-build-6');
+            const rBuild15 = document.getElementById('r-build-15');
+            if (rBuild6) rBuild6.textContent = fmt(build6);
+            if (rBuild15) rBuild15.textContent = fmt(build15);
+            
+            if (activePreset === 6) {
+                if (rTotal) { rTotal.textContent = '~' + fmt(build6); rTotal.style.color = 'var(--red3)'; }
+            } else if (activePreset === 15) {
+                if (rTotal) { rTotal.textContent = '~' + fmt(build15); rTotal.style.color = 'var(--red3)'; }
+            } else {
+                if (rTotal) rTotal.textContent = '—';
+            }
+            if (rHint) rHint.textContent = 'Расстояние > 15 м — строительный тариф. Точная стоимость по телефону.';
+        } else {
+            // Льготный тариф
+            if (activePreset === 6) {
+                if (rTotal) { rTotal.textContent = '~' + fmt(reg.sum6kw); rTotal.style.color = 'var(--red3)'; }
+            } else if (activePreset === 15) {
+                if (rTotal) { rTotal.textContent = '~' + fmt(reg.sum15kw); rTotal.style.color = 'var(--red3)'; }
+            } else {
+                if (rTotal) rTotal.textContent = '—';
+            }
+            if (rHint) rHint.textContent = 'Льготный тариф (≤ 15 м). Выберите пресет мощности.';
+        }
+    } else {
+        // ИП/ООО
+        if (ipBlock) ipBlock.style.display = '';
+        
+        const maxDistance = locality === 'city' ? 200 : 300;
+        const tariff150 = (reg.docs + reg.meter3phSemiIndirect) * 1.22;
+        const rTariff150 = document.getElementById('r-tariff-150');
+        if (rTariff150) rTariff150.textContent = fmt(tariff150);
+
+        if (distance <= maxDistance) {
+            if (rTotal) { rTotal.textContent = '~' + fmt(tariff150); rTotal.style.color = 'var(--red3)'; }
+            if (rHint) rHint.textContent = `Без строительства (≤ ${maxDistance} м). 150 кВт, 3 фазы.`;
+        } else {
+            if (rTotal) { rTotal.textContent = '~' + fmt(tariff150); rTotal.style.color = 'var(--red3)'; }
+            if (rHint) rHint.textContent = `Расстояние > ${maxDistance} м — строительный тариф. Точная стоимость по телефону. 150 кВт, 3 фазы.`;
+        }
+    }
+}
+
+function calcClaim() {
+    const contractDateStr = document.getElementById('claim-contract-date')?.value;
+    const paidAmount = parseFloat(document.getElementById('claim-paid-amount')?.value) || 0;
+    const calcDateStr = document.getElementById('claim-calc-date')?.value;
+    const rClaimPenalty = document.getElementById('r-claim-penalty');
+    const rClaimMoral = document.getElementById('r-claim-moral');
+    const rClaimFine = document.getElementById('r-claim-fine');
+    const rTotal = document.getElementById('r-total');
+    const rHint = document.getElementById('r-hint');
+    const rPaid = document.getElementById('r-paid');
+    const rOverdue = document.getElementById('r-overdue');
+
+    if (!contractDateStr || !calcDateStr || paidAmount <= 0) {
+        if (rClaimPenalty) rClaimPenalty.textContent = '—';
+        if (rClaimMoral) rClaimMoral.textContent = '—';
+        if (rClaimFine) rClaimFine.textContent = '—';
+        if (rTotal) rTotal.textContent = '—';
+        if (rHint) rHint.textContent = 'Заполните дату заключения договора, сумму и дату расчёта.';
+        return;
+    }
+
+    const contractDate = new Date(contractDateStr);
+    const firstDayDefault = new Date(contractDate);
+    firstDayDefault.setDate(firstDayDefault.getDate() + 180);
+    const calcDate = new Date(calcDateStr);
+    const overdueDays = Math.max(0, Math.floor((calcDate - firstDayDefault) / (1000 * 60 * 60 * 24)));
+
+    if (rPaid) rPaid.textContent = fmt(paidAmount);
+    if (rOverdue) rOverdue.textContent = overdueDays + ' дн.';
+
+    if (currentType === 'ip') {
+        const penalty = (paidAmount * 0.0025) * (overdueDays + 60);
+        if (rClaimPenalty) rClaimPenalty.textContent = fmt(penalty);
+        if (rClaimMoral) rClaimMoral.textContent = 'не взыскивается';
+        if (rClaimFine) rClaimFine.textContent = 'не взыскивается';
+        if (rTotal) { rTotal.textContent = '~' + fmt(penalty); rTotal.style.color = 'var(--red3)'; }
+        if (rHint) rHint.textContent = 'Штраф: 0,25% × ' + fmt(paidAmount) + ' × (' + overdueDays + ' + 60) дн.';
+    } else {
+        const penalty = (paidAmount * 0.0025) * (overdueDays + 60);
+        const moralHarm = 5000;
+        const consumerFine = (penalty + moralHarm) / 2;
+        const totalClaim = penalty + moralHarm + consumerFine;
+        if (rClaimPenalty) rClaimPenalty.textContent = fmt(penalty);
+        if (rClaimMoral) rClaimMoral.textContent = fmt(moralHarm);
+        if (rClaimFine) rClaimFine.textContent = fmt(consumerFine);
+        if (rTotal) { rTotal.textContent = '~' + fmt(totalClaim); rTotal.style.color = 'var(--red3)'; }
+        if (rHint) rHint.textContent = 'Штраф: 0,25% × ' + fmt(paidAmount) + ' × (' + overdueDays + ' + 60) дн. + моральный вред + потреб. штраф.';
+    }
+}
+
+// Canvas animation
+const canvas = document.getElementById('lightning-canvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    let bolts = [];
+    let lastBolt = 0;
+    function randomBolt() {
+        const startX = Math.random() * canvas.width;
+        const startY = 0;
+        const endX = startX + (Math.random() - 0.5) * 200;
+        const endY = Math.random() * canvas.height * 0.7;
+        const segments = [];
+        let x = startX, y = startY;
+        const steps = 8 + Math.floor(Math.random() * 8);
+        for (let i = 0; i < steps; i++) {
+            const nx = x + (endX - startX) / steps + (Math.random() - 0.5) * 60;
+            const ny = y + (endY - startY) / steps;
+            segments.push({ x1: x, y1: y, x2: nx, y2: ny });
+            x = nx; y = ny;
+        }
+        return { segments, life: 1, decay: 0.08 + Math.random() * 0.06 };
+    }
+    function drawLightning(ts) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (ts - lastBolt > 2000 + Math.random() * 3000) {
+            bolts.push(randomBolt());
+            if (Math.random() > 0.5) bolts.push(randomBolt());
+            lastBolt = ts;
+        }
+        bolts = bolts.filter(b => {
+            b.life -= b.decay;
+            if (b.life <= 0) return false;
+            b.segments.forEach(s => {
+                ctx.beginPath();
+                ctx.moveTo(s.x1, s.y1);
+                ctx.lineTo(s.x2, s.y2);
+                ctx.strokeStyle = `rgba(255,80,100,${b.life * 0.7})`;
+                ctx.lineWidth = b.life * 1.5;
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = `rgba(192,0,30,${b.life * 0.5})`;
+                ctx.stroke();
+            });
+            return true;
+        });
+        requestAnimationFrame(drawLightning);
+    }
     requestAnimationFrame(drawLightning);
 }
-requestAnimationFrame(drawLightning);
 
+// Intersection Observer
 const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('visible');
@@ -347,46 +436,4 @@ document.querySelectorAll('.services-grid, .steps-track, .why-grid, .pricing-gri
     Array.from(g.children).forEach((c, i) => {
         c.style.transitionDelay = (i * 0.1) + 's';
     });
-});
-
-(function () {
-    const cookieConsent = document.getElementById('cookieConsent');
-    const acceptBtn = document.getElementById('cookieAcceptBtn');
-
-    const cookieAccepted = localStorage.getItem('cookieConsentAccepted');
-
-    if (cookieAccepted === 'true') {
-        cookieConsent.style.display = 'none';
-    }
-
-    acceptBtn.addEventListener('click', function () {
-        localStorage.setItem('cookieConsentAccepted', 'true');
-        cookieConsent.classList.add('hide');
-        setTimeout(() => {
-            cookieConsent.style.display = 'none';
-        }, 400);
-    });
-
-    if (cookieAccepted !== 'true') {
-        cookieConsent.style.display = 'block';
-    }
-})();
-
-document.querySelectorAll('.hero-anchor-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const targetGridId = this.dataset.scrollTo;
-    const tabTarget = targetGridId === 'services-fiz' ? 'fiz' : 'ur';
-
-    const tabBtn = document.querySelector(`.service-tab[data-tab="${tabTarget}"]`);
-    if (tabBtn) {
-      tabBtn.click();
-    }
-
-    const gridElement = document.getElementById(targetGridId);
-    if (gridElement) {
-      const navHeight = document.querySelector('nav')?.offsetHeight || 70;
-      const top = gridElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 30;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  });
 });
