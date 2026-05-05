@@ -308,7 +308,7 @@ function calcConnect(reg) {
             }
             if (rHint) rHint.textContent = 'Льготный тариф (≤ 15 м) — стоимость прибора учёта. Выберите мощность.';
         }
-    } else {
+        } else {
         // ИП/ООО
         if (ipBlock) ipBlock.style.display = '';
 
@@ -322,12 +322,11 @@ function calcConnect(reg) {
             if (rTotal) { rTotal.textContent = '~' + fmt(tariff150); rTotal.style.color = 'var(--red3)'; }
             if (rHint) rHint.textContent = `Без строительства (≤ ${maxDistance} м). 150 кВт, 3 фазы.`;
         } else {
-            // Со строительством — ставка × мощность
-            const tariff150 = reg.rate * 150;
+            // Со строительством
             const rTariff150 = document.getElementById('r-tariff-150');
-            if (rTariff150) rTariff150.textContent = fmt(tariff150);
-            if (rTotal) { rTotal.textContent = '~' + fmt(tariff150); rTotal.style.color = 'var(--red3)'; }
-            if (rHint) rHint.textContent = `Со строительством (> ${maxDistance} м). Ставка × 150 кВт. Точная стоимость по телефону.`;
+            if (rTariff150) rTariff150.textContent = 'Рассчитывается индивидуально';
+            if (rTotal) { rTotal.textContent = 'По телефону'; rTotal.style.color = 'var(--text2)'; }
+            if (rHint) rHint.textContent = `Расстояние > ${maxDistance} м — строительный тариф. Рассчитывается индивидуально, позвоните нам.`;
         }
     }
 }
