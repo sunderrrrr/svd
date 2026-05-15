@@ -1,9 +1,9 @@
+// ======================== main.js ========================
 let REGIONS = [];
 let currentType = 'fiz';
 let activePreset = null;
 let currentCalcMode = 'connect';
 
-// Загрузка регионов из JSON
 fetch('regions.json')
     .then(response => response.json())
     .then(data => {
@@ -14,7 +14,7 @@ fetch('regions.json')
         }
     })
     .catch(error => {
-        console.error('Ошибка загрузки регионов:', error);
+        console.error('Region load error:', error);
         document.getElementById('calc-region').innerHTML = '<option value="">Ошибка загрузки</option>';
     });
 
@@ -29,7 +29,7 @@ function populateRegionSelect() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const sel = document.getElementById('calc-region');
     if (sel) sel.addEventListener('change', calcUpdate);
     initEventListeners();
@@ -40,20 +40,20 @@ function initEventListeners() {
     document.getElementById('type-ip')?.addEventListener('click', () => setType('ip'));
 
     document.querySelectorAll('.preset-pill').forEach(pill => {
-        pill.addEventListener('click', function() {
+        pill.addEventListener('click', function () {
             const kw = parseInt(this.dataset.kw);
             setPreset(this, kw);
         });
     });
 
     document.querySelectorAll('.calc-tab').forEach(tab => {
-        tab.addEventListener('click', function() {
+        tab.addEventListener('click', function () {
             setCalcMode(this.dataset.calcMode);
         });
     });
 
     document.querySelectorAll('.service-tab').forEach(tab => {
-        tab.addEventListener('click', function() {
+        tab.addEventListener('click', function () {
             const target = this.dataset.tab;
             document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
             this.classList.add('active');
@@ -74,7 +74,7 @@ function initEventListeners() {
     });
 
     document.querySelectorAll('.hero-anchor-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             const targetGridId = this.dataset.scrollTo;
             const tabTarget = targetGridId === 'services-fiz' ? 'fiz' : 'ur';
             const tabBtn = document.querySelector(`.service-tab[data-tab="${tabTarget}"]`);
@@ -86,12 +86,11 @@ function initEventListeners() {
                 window.scrollTo({ top, behavior: 'smooth' });
             }
             setCalcMode('connect');
-           
         });
     });
 
     document.querySelectorAll('.service-cta-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href === '#calc-containter') {
                 e.preventDefault();
@@ -116,7 +115,7 @@ function initEventListeners() {
     const acceptBtn = document.getElementById('cookieAcceptBtn');
     const cookieAccepted = localStorage.getItem('cookieConsentAccepted');
     if (cookieAccepted === 'true' && cookieConsent) cookieConsent.style.display = 'none';
-    acceptBtn?.addEventListener('click', function() {
+    acceptBtn?.addEventListener('click', function () {
         localStorage.setItem('cookieConsentAccepted', 'true');
         cookieConsent?.classList.add('hide');
         setTimeout(() => { if (cookieConsent) cookieConsent.style.display = 'none'; }, 400);
@@ -129,12 +128,12 @@ function setType(t) {
     currentType = t;
     document.getElementById('type-fiz')?.classList.toggle('active', t === 'fiz');
     document.getElementById('type-ip')?.classList.toggle('active', t === 'ip');
-    
+
     const fizPresets = document.getElementById('preset-pills-fiz');
     const ipPresets = document.getElementById('preset-pills-ip');
     if (fizPresets) fizPresets.style.display = t === 'fiz' ? '' : 'none';
     if (ipPresets) ipPresets.style.display = t === 'ip' ? '' : 'none';
-    
+
     clearPreset();
     calcUpdate();
 }
@@ -169,15 +168,15 @@ function triggerServiceAnimation(containerId) {
         cards.forEach(card => card.classList.add('visible'));
     });
 }
+
 function setCalcMode(mode) {
     currentCalcMode = mode;
     document.querySelectorAll('.calc-tab').forEach(tab => {
         tab.classList.toggle('active', tab.dataset.calcMode === mode);
     });
-    
+
     const connectFields = document.getElementById('connect-fields');
     const claimFields = document.getElementById('claim-fields');
-    const resultConnect = document.getElementById('result-connect');
     const resultClaim = document.getElementById('result-claim');
     const resultFiz = document.getElementById('result-fiz');
     const resultIp = document.getElementById('result-ip');
@@ -187,9 +186,7 @@ function setCalcMode(mode) {
         if (connectFields) connectFields.style.display = '';
         if (claimFields) claimFields.style.display = 'none';
         if (resultClaim) resultClaim.style.display = 'none';
-        // resultFiz/resultIp показываются в calcConnect
         if (totalLabel) totalLabel.textContent = 'Итого ~ ';
-        // Обновляем видимость result-fiz/result-ip
         if (resultFiz) resultFiz.style.display = currentType === 'fiz' ? '' : 'none';
         if (resultIp) resultIp.style.display = currentType === 'ip' ? '' : 'none';
     } else {
@@ -202,6 +199,7 @@ function setCalcMode(mode) {
     }
     calcUpdate();
 }
+
 function scrollToCalc(mode = 'connect') {
     setCalcMode(mode);
     const el = document.getElementById('calc');
@@ -226,7 +224,7 @@ function calcUpdate() {
 
     const reg = REGIONS[parseInt(ri)];
     if (!reg) return;
-    
+
     if (rRegion) {
         rRegion.textContent = reg.name.length > 22 ? reg.name.substring(0, 22) + '…' : reg.name;
         rRegion.style.color = 'var(--text)';
@@ -241,7 +239,7 @@ function calcUpdate() {
 
 function clearResults() {
     const ids = ['r-tariff-6', 'r-tariff-15', 'r-tariff-150-build', 'r-tariff-150-nobuild',
-                 'r-distance', 'r-locality', 'r-total', 'r-claim-penalty', 'r-claim-moral', 'r-claim-fine'];
+        'r-distance', 'r-locality', 'r-total', 'r-claim-penalty', 'r-claim-moral', 'r-claim-fine'];
     ids.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.textContent = '—';
@@ -269,64 +267,56 @@ function calcConnect(reg) {
     if (currentType === 'fiz') {
         if (fizBlock) fizBlock.style.display = '';
 
-        // Льготный тариф — значения ПУ
-        const льготный6 = reg.meter1ph;
-        const льготный15 = reg.meter3phDirect;
-        
-        // Строительный тариф — ставка × мощность
-        const стройка6 = reg.rate * 6;
-        const стройка15 = reg.rate * 15;
+        const preferential6 = reg.meter1ph;
+        const preferential15 = reg.meter3phDirect;
+        const construction6 = reg.rate * 6;
+        const construction15 = reg.rate * 15;
 
         const rTariff6 = document.getElementById('r-tariff-6');
         const rTariff15 = document.getElementById('r-tariff-15');
         const rBuild6 = document.getElementById('r-build-6');
         const rBuild15 = document.getElementById('r-build-15');
 
-        if (rTariff6) rTariff6.textContent = fmt(льготный6);
-        if (rTariff15) rTariff15.textContent = fmt(льготный15);
-        if (rBuild6) rBuild6.textContent = fmt(стройка6);
-        if (rBuild15) rBuild15.textContent = fmt(стройка15);
+        if (rTariff6) rTariff6.textContent = fmt(preferential6);
+        if (rTariff15) rTariff15.textContent = fmt(preferential15);
+        if (rBuild6) rBuild6.textContent = fmt(construction6);
+        if (rBuild15) rBuild15.textContent = fmt(construction15);
 
         if (distance > 15) {
-            // Строительный тариф
             if (activePreset === 6) {
-                if (rTotal) { rTotal.textContent = '~' + fmt(стройка6); rTotal.style.color = 'var(--red3)'; }
+                if (rTotal) { rTotal.textContent = '~' + fmt(construction6); rTotal.style.color = 'var(--red3)'; }
             } else if (activePreset === 15) {
-                if (rTotal) { rTotal.textContent = '~' + fmt(стройка15); rTotal.style.color = 'var(--red3)'; }
+                if (rTotal) { rTotal.textContent = '~' + fmt(construction15); rTotal.style.color = 'var(--red3)'; }
             } else {
                 if (rTotal) rTotal.textContent = '—';
             }
             if (rHint) rHint.textContent = 'Расстояние > 15 м — строительный тариф (ставка × мощность). Точная стоимость по телефону.';
         } else {
-            // Льготный тариф
             if (activePreset === 6) {
-                if (rTotal) { rTotal.textContent = '~' + fmt(льготный6); rTotal.style.color = 'var(--red3)'; }
+                if (rTotal) { rTotal.textContent = '~' + fmt(preferential6); rTotal.style.color = 'var(--red3)'; }
             } else if (activePreset === 15) {
-                if (rTotal) { rTotal.textContent = '~' + fmt(льготный15); rTotal.style.color = 'var(--red3)'; }
+                if (rTotal) { rTotal.textContent = '~' + fmt(preferential15); rTotal.style.color = 'var(--red3)'; }
             } else {
                 if (rTotal) rTotal.textContent = '—';
             }
             if (rHint) rHint.textContent = 'Льготный тариф (≤ 15 м) — стоимость прибора учёта. Выберите мощность.';
         }
-        } else {
-        // ИП/ООО
+    } else {
+        // IP / OOO
         if (ipBlock) ipBlock.style.display = '';
 
         const maxDistance = locality === 'city' ? 200 : 300;
-        
-        if (distance <= maxDistance) {
-            // Без строительства — ПУ из последней колонки
-            const tariff150 = reg.meter3phSemiIndirect;
-            const rTariff150 = document.getElementById('r-tariff-150');
-            if (rTariff150) rTariff150.textContent = fmt(tariff150);
-            if (rTotal) { rTotal.textContent = '~' + fmt(tariff150); rTotal.style.color = 'var(--red3)'; }
-            if (rHint) rHint.textContent = `Без строительства (≤ ${maxDistance} м). 150 кВт, 3 фазы.`;
+        const rTariff150 = document.getElementById('r-tariff-150');
+
+        if (distance < maxDistance) {
+            const businessPrice = reg.businessPrice;
+            if (rTariff150) rTariff150.textContent = fmt(businessPrice);
+            if (rTotal) { rTotal.textContent = '~' + fmt(businessPrice); rTotal.style.color = 'var(--red3)'; }
+            if (rHint) rHint.textContent = `Без строительства (расстояние < ${maxDistance} м). 150 кВт, 3 фазы.`;
         } else {
-            // Со строительством
-            const rTariff150 = document.getElementById('r-tariff-150');
             if (rTariff150) rTariff150.textContent = 'Рассчитывается индивидуально';
             if (rTotal) { rTotal.textContent = 'По телефону'; rTotal.style.color = 'var(--text2)'; }
-            if (rHint) rHint.textContent = `Расстояние > ${maxDistance} м — строительный тариф. Рассчитывается индивидуально, позвоните нам.`;
+            if (rHint) rHint.textContent = `Расстояние ≥ ${maxDistance} м — строительный тариф. Звоните.`;
         }
     }
 }
@@ -381,7 +371,7 @@ function calcClaim() {
     }
 }
 
-// Canvas animation
+// Canvas lightning (unchanged)
 const canvas = document.getElementById('lightning-canvas');
 if (canvas) {
     const ctx = canvas.getContext('2d');

@@ -1,40 +1,268 @@
 [
-  {"name": "Астраханская область", "rate": 7695, "docs": 8279, "meter1ph": 23513, "meter3phDirect": 35659, "meter3phSemiIndirect": 40581, "sum6kw": 46170, "sum15kw": 115425},
-  {"name": "Брянская область", "rate": 8540, "docs": 14016.37, "meter1ph": 22175.46, "meter3phDirect": 32582.08, "meter3phSemiIndirect": 42003.95, "sum6kw": 51240, "sum15kw": 128100},
-  {"name": "Владимирская область", "rate": 12000, "docs": 21997.23, "meter1ph": 21047.59, "meter3phDirect": 34999.01, "meter3phSemiIndirect": 57694.46, "sum6kw": 72000, "sum15kw": 180000},
-  {"name": "Волгоградская область", "rate": 10124.56, "docs": 12628.72, "meter1ph": 20340.31, "meter3phDirect": 32423.27, "meter3phSemiIndirect": 43498.24, "sum6kw": 60747.36, "sum15kw": 151868.4},
-  {"name": "Воронежская область", "rate": 7844, "docs": 7154.9, "meter1ph": 26567.69, "meter3phDirect": 38168.18, "meter3phSemiIndirect": 38691.87, "sum6kw": 47064, "sum15kw": 117660},
-  {"name": "Ивановская область", "rate": 6522.09, "docs": 12366.98, "meter1ph": 21170.87, "meter3phDirect": 32161.62, "meter3phSemiIndirect": 55383.02, "sum6kw": 39132.54, "sum15kw": 97831.35},
-  {"name": "Казань Республика Татарстан", "rate": 7600, "docs": 33912, "meter1ph": 30905, "meter3phDirect": 40288, "meter3phSemiIndirect": 166150, "sum6kw": 45600, "sum15kw": 114000},
-  {"name": "Калининградская область", "rate": 12801.82, "docs": 23405.69, "meter1ph": 24589.96, "meter3phDirect": 38457.48, "meter3phSemiIndirect": 51537.27, "sum6kw": 76810.92, "sum15kw": 192027.3},
-  {"name": "Калужская область", "rate": 8740, "docs": 25098.71, "meter1ph": 18865, "meter3phDirect": 31799, "meter3phSemiIndirect": 51346, "sum6kw": 52440, "sum15kw": 131100},
-  {"name": "Кировская область", "rate": 7800, "docs": 25710, "meter1ph": 25279, "meter3phDirect": 38852, "meter3phSemiIndirect": 38852, "sum6kw": 46800, "sum15kw": 117000},
-  {"name": "Костромская область", "rate": 6522.09, "docs": 12436.31, "meter1ph": 28172.71, "meter3phDirect": 45296.11, "meter3phSemiIndirect": 82902.46, "sum6kw": 39132.54, "sum15kw": 97831.35},
-  {"name": "Краснодарский край", "rate": 11470, "docs": 17363.37, "meter1ph": 28307, "meter3phDirect": 45940, "meter3phSemiIndirect": 56226, "sum6kw": 68820, "sum15kw": 172050},
-  {"name": "Курская область", "rate": 9939, "docs": 18853, "meter1ph": 26884.91, "meter3phDirect": 40246.53, "meter3phSemiIndirect": 63867.85, "sum6kw": 59634, "sum15kw": 149085},
-  {"name": "Ленинградская область", "rate": 11910, "docs": 30065, "meter1ph": 33619, "meter3phDirect": 43404, "meter3phSemiIndirect": 54690, "sum6kw": 71460, "sum15kw": 178650},
-  {"name": "Московская область", "rate": 23859.53, "docs": 16663.41, "meter1ph": 29543.57, "meter3phDirect": 40869.94, "meter3phSemiIndirect": 48123.51, "sum6kw": 143157.18, "sum15kw": 357892.95},
-  {"name": "Нижегородская область (Дзержинск)", "rate": 9441, "docs": 19148.82, "meter1ph": 23775.51, "meter3phDirect": 37974.67, "meter3phSemiIndirect": 46506.04, "sum6kw": 56646, "sum15kw": 141615},
-  {"name": "Новосибирская область", "rate": 6522, "docs": 42322, "meter1ph": 19206, "meter3phDirect": 22143, "meter3phSemiIndirect": 29437, "sum6kw": 39132, "sum15kw": 97830},
-  {"name": "Омская область", "rate": 10540, "docs": 35491.79, "meter1ph": 26871.04, "meter3phDirect": 37372.62, "meter3phSemiIndirect": 44575.33, "sum6kw": 63240, "sum15kw": 158100},
-  {"name": "Оренбургская область", "rate": 6519.7, "docs": 19079.77, "meter1ph": 35212.17, "meter3phDirect": 49275.47, "meter3phSemiIndirect": 90254.77, "sum6kw": 39118.2, "sum15kw": 97795.5},
-  {"name": "Пензенская область", "rate": 8224.57, "docs": 8761.63, "meter1ph": 21430.98, "meter3phDirect": 34470.14, "meter3phSemiIndirect": 41443.17, "sum6kw": 49347.42, "sum15kw": 123368.55},
-  {"name": "Псковская область", "rate": 8635.02, "docs": 21987.13, "meter1ph": 34745.19, "meter3phDirect": 47523.6, "meter3phSemiIndirect": 71648.39, "sum6kw": 51810.12, "sum15kw": 129525.3},
-  {"name": "Республика Коми", "rate": 10000, "docs": 30393.54, "meter1ph": 25327.76, "meter3phDirect": 43018.09, "meter3phSemiIndirect": 50169.91, "sum6kw": 60000, "sum15kw": 150000},
-  {"name": "Ростовская область", "rate": 9981.25, "docs": 10710.29, "meter1ph": 21894.98, "meter3phDirect": 39897.4, "meter3phSemiIndirect": 53052.96, "sum6kw": 59887.5, "sum15kw": 149718.75},
-  {"name": "Рязанская область", "rate": 25178.99, "docs": 24827.68, "meter1ph": 27862.74, "meter3phDirect": 38870.15, "meter3phSemiIndirect": 42719.15, "sum6kw": 151073.94, "sum15kw": 377684.85},
-  {"name": "Самарская область (Тольятти)", "rate": 13039, "docs": 18799.11, "meter1ph": 31908.66, "meter3phDirect": 47020.75, "meter3phSemiIndirect": 51769.33, "sum6kw": 78234, "sum15kw": 195585},
-  {"name": "Саратовская область", "rate": 6265.82, "docs": 21702.63, "meter1ph": 23298.32, "meter3phDirect": 36710.69, "meter3phSemiIndirect": 59358.21, "sum6kw": 37594.92, "sum15kw": 93987.3},
-  {"name": "Свердловская область", "rate": 10000, "docs": 20024, "meter1ph": 25416, "meter3phDirect": 42396, "meter3phSemiIndirect": 68879, "sum6kw": 60000, "sum15kw": 150000},
-  {"name": "Смоленская область", "rate": 9400, "docs": 10950, "meter1ph": 21974, "meter3phDirect": 35795, "meter3phSemiIndirect": 47166, "sum6kw": 56400, "sum15kw": 141000},
-  {"name": "Тамбовская область", "rate": 6630.79, "docs": 9566.54, "meter1ph": 24642.25, "meter3phDirect": 37154.67, "meter3phSemiIndirect": 54848.18, "sum6kw": 39784.74, "sum15kw": 99461.85},
-  {"name": "Тверская область", "rate": 10262.39, "docs": 21434.86, "meter1ph": 21833.77, "meter3phDirect": 35668.33, "meter3phSemiIndirect": 50072.6, "sum6kw": 61574.34, "sum15kw": 153935.85},
-  {"name": "Томская область", "rate": 7378, "docs": 16766.03, "meter1ph": 20028, "meter3phDirect": 34142, "meter3phSemiIndirect": 53425, "sum6kw": 44268, "sum15kw": 110670},
-  {"name": "Тульская область", "rate": 10822.82, "docs": 26057.58, "meter1ph": 35180.2, "meter3phDirect": 42824.5, "meter3phSemiIndirect": 69264.66, "sum6kw": 64936.92, "sum15kw": 162342.3},
-  {"name": "Тюменская область", "rate": 6522.09, "docs": 11055, "meter1ph": 23560, "meter3phDirect": 38147, "meter3phSemiIndirect": 57704, "sum6kw": 39132.54, "sum15kw": 97831.35},
-  {"name": "Ульяновская область", "rate": 8471.2, "docs": 13510, "meter1ph": 21829.45, "meter3phDirect": 32107.27, "meter3phSemiIndirect": 42739.03, "sum6kw": 50827.2, "sum15kw": 127068},
-  {"name": "Уфа Республика Башкортостан", "rate": 6600, "docs": 15273.71, "meter1ph": 19876.81, "meter3phDirect": 27507.37, "meter3phSemiIndirect": 38482.32, "sum6kw": 39600, "sum15kw": 99000},
-  {"name": "Челябинская область", "rate": 13044.18, "docs": 19719.53, "meter1ph": 28604.4, "meter3phDirect": 39830.72, "meter3phSemiIndirect": 49758.4, "sum6kw": 78265.08, "sum15kw": 195662.7},
-  {"name": "Ярославская область", "rate": 8001, "docs": 18630.69, "meter1ph": 26936.65, "meter3phDirect": 38842.19, "meter3phSemiIndirect": 44711.63, "sum6kw": 48006, "sum15kw": 120015},
-  {"name": "Республика Калмыкия (Элиста)", "rate": 7227, "docs": 8324.33, "meter1ph": 18336.35, "meter3phDirect": 34041.47, "meter3phSemiIndirect": 46073.63, "sum6kw": 43362, "sum15kw": 108405}
+  {
+    "name": "Астраханская область",
+    "rate": 7695,
+    "meter1ph": 23513,
+    "meter3phDirect": 35659,
+    "businessPrice": 59609
+  },
+  {
+    "name": "Брянская область",
+    "rate": 8540,
+    "meter1ph": 22175.46,
+    "meter3phDirect": 32582.08,
+    "businessPrice": 68345
+  },
+  {
+    "name": "Владимирская область",
+    "rate": 12000,
+    "meter1ph": 21047.59,
+    "meter3phDirect": 34999.01,
+    "businessPrice": 97192
+  },
+  {
+    "name": "Волгоградская область",
+    "rate": 10124.56,
+    "meter1ph": 20340.31,
+    "meter3phDirect": 32423.27,
+    "businessPrice": 68464
+  },
+  {
+    "name": "Воронежская область",
+    "rate": 7844,
+    "meter1ph": 26567.69,
+    "meter3phDirect": 38168.18,
+    "businessPrice": 55913
+  },
+  {
+    "name": "Ивановская область",
+    "rate": 6522.09,
+    "meter1ph": 21170.87,
+    "meter3phDirect": 32161.62,
+    "businessPrice": 82652
+  },
+  {
+    "name": "Казань Республика Татарстан",
+    "rate": 7600,
+    "meter1ph": 30905,
+    "meter3phDirect": 40288,
+    "businessPrice": 244096
+  },
+  {
+    "name": "Калининградская область",
+    "rate": 12801.82,
+    "meter1ph": 24589.96,
+    "meter3phDirect": 38457.48,
+    "businessPrice": 91451
+  },
+  {
+    "name": "Калужская область",
+    "rate": 8740,
+    "meter1ph": 18865,
+    "meter3phDirect": 31799,
+    "businessPrice": 85749
+  },
+  {
+    "name": "Кировская область",
+    "rate": 7800,
+    "meter1ph": 25279,
+    "meter3phDirect": 38852,
+    "businessPrice": 78280
+  },
+  {
+    "name": "Костромская область",
+    "rate": 6522.09,
+    "meter1ph": 28172.71,
+    "meter3phDirect": 45296.11,
+    "businessPrice": 116297
+  },
+  {
+    "name": "Краснодарский край",
+    "rate": 11470,
+    "meter1ph": 28307,
+    "meter3phDirect": 45940,
+    "businessPrice": 89722
+  },
+  {
+    "name": "Курская область",
+    "rate": 9939,
+    "meter1ph": 26884.91,
+    "meter3phDirect": 40246.53,
+    "businessPrice": 100913
+  },
+  {
+    "name": "Ленинградская область",
+    "rate": 11910,
+    "meter1ph": 33619,
+    "meter3phDirect": 43404,
+    "businessPrice": 103341
+  },
+  {
+    "name": "Московская область",
+    "rate": 23859.53,
+    "meter1ph": 29543.57,
+    "meter3phDirect": 40869.94,
+    "businessPrice": 78984
+  },
+  {
+    "name": "Нижегородская область (Дзержинск)",
+    "rate": 9441,
+    "meter1ph": 23775.51,
+    "meter3phDirect": 37974.67,
+    "businessPrice": 80124
+  },
+  {
+    "name": "Новосибирская область",
+    "rate": 6522,
+    "meter1ph": 19206,
+    "meter3phDirect": 22143,
+    "businessPrice": 75107
+  },
+  {
+    "name": "Омская область",
+    "rate": 10540,
+    "meter1ph": 26871.04,
+    "meter3phDirect": 37372.62,
+    "businessPrice": 97318
+  },
+  {
+    "name": "Оренбургская область",
+    "rate": 6519.7,
+    "meter1ph": 35212.17,
+    "meter3phDirect": 49275.47,
+    "businessPrice": 133428
+  },
+  {
+    "name": "Пензенская область",
+    "rate": 8224.57,
+    "meter1ph": 21430.98,
+    "meter3phDirect": 34470.14,
+    "businessPrice": 61278
+  },
+  {
+    "name": "Псковская область",
+    "rate": 8635.02,
+    "meter1ph": 34745.19,
+    "meter3phDirect": 47523.6,
+    "businessPrice": 114231
+  },
+  {
+    "name": "Республика Коми",
+    "rate": 10000,
+    "meter1ph": 25327.76,
+    "meter3phDirect": 43018.09,
+    "businessPrice": 98271
+  },
+  {
+    "name": "Ростовская область",
+    "rate": 9981.25,
+    "meter1ph": 21894.98,
+    "meter3phDirect": 39897.4,
+    "businessPrice": 77771
+  },
+  {
+    "name": "Рязанская область",
+    "rate": 25178.99,
+    "meter1ph": 27862.74,
+    "meter3phDirect": 38870.15,
+    "businessPrice": 82376
+  },
+  {
+    "name": "Самарская область (Тольятти)",
+    "rate": 13039,
+    "meter1ph": 31908.66,
+    "meter3phDirect": 47020.75,
+    "businessPrice": 86047
+  },
+  {
+    "name": "Саратовская область",
+    "rate": 6265.82,
+    "meter1ph": 23298.32,
+    "meter3phDirect": 36710.69,
+    "businessPrice": 98840
+  },
+  {
+    "name": "Свердловская область",
+    "rate": 10000,
+    "meter1ph": 25416,
+    "meter3phDirect": 42396,
+    "businessPrice": 108420
+  },
+  {
+    "name": "Смоленская область",
+    "rate": 9400,
+    "meter1ph": 21974,
+    "meter3phDirect": 35795,
+    "businessPrice": 70896
+  },
+  {
+    "name": "Тамбовская область",
+    "rate": 6630.79,
+    "meter1ph": 24642.25,
+    "meter3phDirect": 37154.67,
+    "businessPrice": 78510
+  },
+  {
+    "name": "Тверская область",
+    "rate": 10262.39,
+    "meter1ph": 21833.77,
+    "meter3phDirect": 35668.33,
+    "businessPrice": 87280
+  },
+  {
+    "name": "Томская область",
+    "rate": 7378,
+    "meter1ph": 20028,
+    "meter3phDirect": 34142,
+    "businessPrice": 85652
+  },
+  {
+    "name": "Тульская область",
+    "rate": 10822.82,
+    "meter1ph": 35180.2,
+    "meter3phDirect": 42824.5,
+    "businessPrice": 116287
+  },
+  {
+    "name": "Тюменская область",
+    "rate": 6522.09,
+    "meter1ph": 23560,
+    "meter3phDirect": 38147,
+    "businessPrice": 83923
+  },
+  {
+    "name": "Ульяновская область",
+    "rate": 8471.2,
+    "meter1ph": 21829.45,
+    "meter3phDirect": 32107.27,
+    "businessPrice": 68635
+  },
+  {
+    "name": "Уфа Республика Башкортостан",
+    "rate": 6600,
+    "meter1ph": 19876.81,
+    "meter3phDirect": 27507.37,
+    "businessPrice": 65584
+  },
+  {
+    "name": "Челябинская область",
+    "rate": 13044.18,
+    "meter1ph": 28604.4,
+    "meter3phDirect": 39830.72,
+    "businessPrice": 84632
+  },
+  {
+    "name": "Ярославская область",
+    "rate": 8001,
+    "meter1ph": 26936.65,
+    "meter3phDirect": 38842.19,
+    "businessPrice": 77255
+  },
+  {
+    "name": "Республика Калмыкия (Элиста)",
+    "rate": 7227,
+    "meter1ph": 18336.35,
+    "meter3phDirect": 34041.47,
+    "businessPrice": 66302
+  }
 ]
