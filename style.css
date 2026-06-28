@@ -13,8 +13,8 @@
     --text2: #fcd0df;
     --text3: #c09aab;
     --white: #ffffff;
-    --font-base: 23px;
-    --container-max: 1100px;
+    --font-base: 20px;
+    --container-max: 1300px;
 }
 
 * {
@@ -426,7 +426,6 @@ h2 {
     padding: 2rem;
     transition: all 0.3s;
     position: relative;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -474,6 +473,7 @@ h2 {
     color: var(--white);
     margin-bottom: 0.7rem;
     line-height: 1.4;
+    word-break: break-word;
 }
 .service-desc {
     font-size: 0.9rem;
