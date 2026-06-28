@@ -439,3 +439,91 @@ document.querySelectorAll('.services-grid, .steps-track, .why-grid, .pricing-gri
         c.style.transitionDelay = (i * 0.1) + 's';
     });
 });
+// ============================================================
+// МОДАЛЬНОЕ ОКНО СОГЛАСИЯ ПД
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('pdModal');
+    const closeBtn = document.getElementById('pdModalClose');
+    const checkbox = document.getElementById('pdAgreeCheckbox');
+    const submitBtn = document.getElementById('pdSubmitBtn');
+
+    if (!modal || !closeBtn || !checkbox || !submitBtn) {
+        console.warn('PD Modal elements not found');
+        return;
+    }
+
+    let pendingAction = null; // что делать после согласия
+
+    // Функция открытия модалки
+    window.openPdModal = function(event, action, url) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        pendingAction = { action, url };
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        checkbox.checked = false;
+        submitBtn.classList.remove('active');
+        submitBtn.disabled = true;
+    };
+
+    // Закрытие
+    function closePdModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        pendingAction = null;
+    }
+
+    closeBtn.addEventListener('click', closePdModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closePdModal();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closePdModal();
+    });
+
+    // Активация кнопки
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            submitBtn.classList.add('active');
+            submitBtn.disabled = false;
+        } else {
+            submitBtn.classList.remove('active');
+            submitBtn.disabled = true;
+        }
+    });
+
+    // Выполнение действия после согласия
+    submitBtn.addEventListener('click', function() {
+        if (!checkbox.checked) return;
+        if (!pendingAction) return;
+
+        const { action, url } = pendingAction;
+        closePdModal();
+
+        // Выполняем действие
+        setTimeout(() => {
+            if (action === 'call') {
+                window.location.href = url;
+            } else if (action === 'tg') {
+                window.open(url, '_blank');
+            } else if (action === 'max') {
+                window.open(url, '_blank');
+            } else if (action === 'calc') {
+                // Для кнопок "Узнать стоимость" - скролл к калькулятору
+                const el = document.getElementById('calc');
+                const navHeight = document.querySelector('nav')?.offsetHeight || 70;
+                const top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                window.scrollTo({ top, behavior: 'smooth' });
+                // Переключаем режим если нужно
+                if (url === 'claim') {
+                    setCalcMode('claim');
+                } else {
+                    setCalcMode('connect');
+                }
+            }
+        }, 300);
+    });
+});
