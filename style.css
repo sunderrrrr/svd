@@ -1711,3 +1711,60 @@ footer {
         gap: 0.5rem;
     }
 }
+
+/* ===== ПОЛЯ В МОДАЛКЕ ===== */
+.pd-field {
+    margin-bottom: 1rem;
+}
+
+.pd-field-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text2);
+    margin-bottom: 0.3rem;
+}
+
+.pd-required {
+    color: var(--red3);
+}
+
+.pd-field-input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(192, 0, 30, 0.3);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.pd-field-input:focus {
+    border-color: var(--red3);
+    background: rgba(192, 0, 30, 0.1);
+    box-shadow: 0 0 0 2px rgba(192, 0, 30, 0.2);
+}
+
+.pd-field-input::placeholder {
+    color: var(--text3);
+    opacity: 0.6;
+}
+
+.pd-field-input.error {
+    border-color: #ff4444;
+    box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
+}
+
+/* Адаптив */
+@media (max-width: 480px) {
+    .pd-field-input {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+    }
+    .pd-field-label {
+        font-size: 0.75rem;
+    }
+}

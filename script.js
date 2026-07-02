@@ -440,22 +440,24 @@ document.querySelectorAll('.services-grid, .steps-track, .why-grid, .pricing-gri
     });
 });
 // ============================================================
-// МОДАЛЬНОЕ ОКНО СОГЛАСИЯ ПД
+// МОДАЛЬНОЕ ОКНО СОГЛАСИЯ ПД С WEB3FORMS
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('pdModal');
     const closeBtn = document.getElementById('pdModalClose');
     const checkbox = document.getElementById('pdAgreeCheckbox');
     const submitBtn = document.getElementById('pdSubmitBtn');
+    const fioInput = document.getElementById('pdFio');
+    const phoneInput = document.getElementById('pdPhone');
 
-    if (!modal || !closeBtn || !checkbox || !submitBtn) {
+    if (!modal || !closeBtn || !checkbox || !submitBtn || !fioInput || !phoneInput) {
         console.warn('PD Modal elements not found');
         return;
     }
 
-    let pendingAction = null; // что делать после согласия
+    let pendingAction = null;
 
-    // Функция открытия модалки
+    // === ОТКРЫТИЕ ===
     window.openPdModal = function(event, action, url) {
         if (event) {
             event.preventDefault();
@@ -464,12 +466,18 @@ document.addEventListener('DOMContentLoaded', function() {
         pendingAction = { action, url };
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
+        // Сбрасываем поля
+        fioInput.value = '';
+        phoneInput.value = '';
         checkbox.checked = false;
         submitBtn.classList.remove('active');
         submitBtn.disabled = true;
+        fioInput.classList.remove('error');
+        phoneInput.classList.remove('error');
+        setTimeout(() => fioInput.focus(), 300);
     };
 
-    // Закрытие
+    // === ЗАКРЫТИЕ ===
     function closePdModal() {
         modal.classList.remove('open');
         document.body.style.overflow = '';
@@ -484,46 +492,119 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Escape' && modal.classList.contains('open')) closePdModal();
     });
 
-    // Активация кнопки
-    checkbox.addEventListener('change', function() {
-        if (this.checked) {
+    // === ВАЛИДАЦИЯ ===
+    function validateFields() {
+        const fio = fioInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const isChecked = checkbox.checked;
+
+        const fioValid = fio.length >= 4 && fio.split(' ').length >= 2;
+        const phoneDigits = phone.replace(/\D/g, '');
+        const phoneValid = phoneDigits.length >= 10;
+
+        fioInput.classList.toggle('error', fio.length > 0 && !fioValid);
+        phoneInput.classList.toggle('error', phone.length > 0 && !phoneValid);
+
+        if (fioValid && phoneValid && isChecked) {
             submitBtn.classList.add('active');
             submitBtn.disabled = false;
         } else {
             submitBtn.classList.remove('active');
             submitBtn.disabled = true;
         }
+
+        return fioValid && phoneValid && isChecked;
+    }
+
+    fioInput.addEventListener('input', validateFields);
+    phoneInput.addEventListener('input', validateFields);
+    checkbox.addEventListener('change', validateFields);
+
+    // === ФОРМАТИРОВАНИЕ ТЕЛЕФОНА ===
+    phoneInput.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, '');
+        if (value.length > 11) value = value.slice(0, 11);
+        if (value.length > 0) {
+            if (value.length <= 1) {
+                value = '+7 ' + value;
+            } else if (value.length <= 4) {
+                value = '+7 ' + value.slice(0, 1) + ' ' + value.slice(1);
+            } else if (value.length <= 7) {
+                value = '+7 ' + value.slice(0, 1) + ' ' + value.slice(1, 4) + ' ' + value.slice(4);
+            } else if (value.length <= 9) {
+                value = '+7 ' + value.slice(0, 1) + ' ' + value.slice(1, 4) + ' ' + value.slice(4, 7) + ' ' + value.slice(7);
+            } else {
+                value = '+7 ' + value.slice(0, 1) + ' ' + value.slice(1, 4) + ' ' + value.slice(4, 7) + ' ' + value.slice(7, 9) + ' ' + value.slice(9, 11);
+            }
+        }
+        this.value = value;
+        validateFields();
     });
 
-    // Выполнение действия после согласия
-    submitBtn.addEventListener('click', function() {
-        if (!checkbox.checked) return;
+    // === ОТПРАВКА ЧЕРЕЗ WEB3FORMS ===
+    submitBtn.addEventListener('click', async function() {
+        if (!validateFields()) return;
         if (!pendingAction) return;
 
-        const { action, url } = pendingAction;
-        closePdModal();
+        const fio = fioInput.value.trim();
+        const phone = phoneInput.value.trim();
 
-        // Выполняем действие
-        setTimeout(() => {
-            if (action === 'call') {
-                window.location.href = url;
-            } else if (action === 'tg') {
-                window.open(url, '_blank');
-            } else if (action === 'max') {
-                window.open(url, '_blank');
-            } else if (action === 'calc') {
-                // Для кнопок "Узнать стоимость" - скролл к калькулятору
-                const el = document.getElementById('calc');
-                const navHeight = document.querySelector('nav')?.offsetHeight || 70;
-                const top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
-                window.scrollTo({ top, behavior: 'smooth' });
-                // Переключаем режим если нужно
-                if (url === 'claim') {
-                    setCalcMode('claim');
-                } else {
-                    setCalcMode('connect');
-                }
+        try {
+            const originalText = this.textContent;
+            this.textContent = '⏳ Отправка...';
+            this.disabled = true;
+
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: 'dee8bc21-8216-4b7d-b9f0-aaf8e245ef50',
+                    name: fio,
+                    phone: phone,
+                    message: `Пользователь ${fio} с телефоном ${phone} дал согласие на обработку персональных данных.`,
+                    subject: '✅ Новое согласие на обработку ПД',
+                    from_name: 'Сайт Свет в Дом'
+                })
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                this.textContent = '✅ Отправлено!';
+                this.style.background = '#00a854';
+
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = '';
+                    this.disabled = false;
+                    closePdModal();
+
+                    const { action, url } = pendingAction;
+                    setTimeout(() => {
+                        if (action === 'call') {
+                            window.location.href = url;
+                        } else if (action === 'tg') {
+                            window.open(url, '_blank');
+                        } else if (action === 'max') {
+                            window.open(url, '_blank');
+                        }
+                    }, 300);
+                }, 1200);
+            } else {
+                throw new Error(result.message || 'Ошибка отправки');
             }
-        }, 300);
+        } catch (error) {
+            console.error('Send error:', error);
+            this.textContent = '❌ Ошибка, попробуйте ещё раз';
+            this.style.background = '#cc0000';
+            setTimeout(() => {
+                this.textContent = 'Отправить и продолжить';
+                this.style.background = '';
+                this.disabled = false;
+            }, 2000);
+        }
     });
 });

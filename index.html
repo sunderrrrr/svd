@@ -666,41 +666,53 @@
     </a>
   </div>
 
-  <!-- ===== МОДАЛЬНОЕ ОКНО СОГЛАСИЯ ПД ===== -->
-  <div class="pd-modal-overlay" id="pdModal">
+  <!-- ===== МОДАЛЬНОЕ ОКНО СОГЛАСИЯ ПД С WEB3FORMS ===== -->
+<div class="pd-modal-overlay" id="pdModal">
     <div class="pd-modal">
-      <button class="pd-modal-close" id="pdModalClose">✕</button>
-      <div class="pd-modal-icon">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="M9 12l2 2 4-4"/>
-        </svg>
-      </div>
-      <div class="pd-modal-title">Согласие на обработку персональных данных</div>
-      <div class="pd-modal-body">
-        <p>
-          Нажимая кнопку, Вы даете 
-          <strong>Индивидуальному предпринимателю Коротаеву Виталию Рудольфовичу (ИНН 301804520419)</strong>
-          согласие на обработку своих персональных данных (ФИО, телефон, e-mail) в целях подготовки, заключения и исполнения договора.
-        </p>
-        <p style="font-size:0.85rem; color:var(--text3); margin-top:0.5rem;">
-          Срок действия — до достижения целей обработки. Отозвать согласие можно письмом на 
-          <a href="mailto:KorotaevVR83@yandex.ru" style="color:var(--red3);">KorotaevVR83@yandex.ru</a>.
-        </p>
-        <div class="pd-checkbox-wrap">
-          <label class="pd-checkbox-label">
-            <input type="checkbox" id="pdAgreeCheckbox">
-            <span class="pd-checkbox-custom"></span>
-            Я ознакомлен(а) с 
-            <a href="docs/politics.pdf" target="_blank">Политикой обработки ПД</a>
-            и 
-            <a href="docs/agree.pdf" target="_blank">Согласием на обработку ПД</a>
-          </label>
+        <button class="pd-modal-close" id="pdModalClose">✕</button>
+        <div class="pd-modal-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+            </svg>
         </div>
-      </div>
-      <button class="pd-modal-btn" id="pdSubmitBtn" disabled>Подтверждаю</button>
+        <div class="pd-modal-title">Подтверждение контакта</div>
+        <div class="pd-modal-body">
+            <p style="margin-bottom: 1rem;">
+                Для связи с Вами нам нужны контактные данные. Заполните поля и дайте согласие на обработку персональных данных.
+            </p>
+
+            <!-- ПОЛЕ ФИО -->
+            <div class="pd-field">
+                <label class="pd-field-label">Ваше ФИО <span class="pd-required">*</span></label>
+                <input type="text" class="pd-field-input" id="pdFio" placeholder="Иванов Иван Иванович" required>
+            </div>
+
+            <!-- ПОЛЕ ТЕЛЕФОН -->
+            <div class="pd-field">
+                <label class="pd-field-label">Номер телефона <span class="pd-required">*</span></label>
+                <input type="tel" class="pd-field-input" id="pdPhone" placeholder="+7 999 123-45-67" required>
+            </div>
+
+            <!-- ГАЛОЧКА СОГЛАСИЯ -->
+            <div class="pd-checkbox-wrap">
+                <label class="pd-checkbox-label">
+                    <input type="checkbox" id="pdAgreeCheckbox">
+                    <span class="pd-checkbox-custom"></span>
+                    Я даю согласие на обработку своих персональных данных в соответствии с 
+                    <a href="docs/politics.pdf" target="_blank">Политикой обработки ПД</a>
+                    и 
+                    <a href="docs/agree.pdf" target="_blank">Согласием на ОПД</a>
+                </label>
+            </div>
+
+            <p style="font-size:0.75rem; color:var(--text3); margin-top:0.8rem;">
+                * Поля обязательны для заполнения. Данные используются только для связи с Вами.
+            </p>
+        </div>
+        <button class="pd-modal-btn" id="pdSubmitBtn" disabled>Отправить и продолжить</button>
     </div>
-  </div>
+</div>
 
   <script src="script.js"></script>
 </body>
