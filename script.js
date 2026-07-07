@@ -522,25 +522,143 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // === ФОРМАТИРОВАНИЕ ТЕЛЕФОНА ===
     phoneInput.addEventListener('input', function() {
-        let value = this.value.replace(/\D/g, '');
-        if (value.length > 11) value = value.slice(0, 11);
-        if (value.length > 0) {
-            if (value.length <= 1) {
-                value = '+7 ' + value;
-            } else if (value.length <= 4) {
-                value = '+7 ' + value.slice(0, 1) + ' ' + value.slice(1);
-            } else if (value.length <= 7) {
-                value = '+7 ' + value.slice(0, 1) + ' ' + value.slice(1, 4) + ' ' + value.slice(4);
-            } else if (value.length <= 9) {
-                value = '+7 ' + value.slice(0, 1) + ' ' + value.slice(1, 4) + ' ' + value.slice(4, 7) + ' ' + value.slice(7);
-            } else {
-                value = '+7 ' + value.slice(0, 1) + ' ' + value.slice(1, 4) + ' ' + value.slice(4, 7) + ' ' + value.slice(7, 9) + ' ' + value.slice(9, 11);
+    // Удаляем все НЕ цифры
+    let digits = this.value.replace(/\D/g, '');
+    
+    // Ограничиваем 11 цифрами (код страны + 10 цифр номера)
+    if (digits.length > 11) {
+        digits = digits.slice(0, 11);
+    }
+    
+    // Если цифр нет - поле пустое
+    if (digits.length === 0) {
+        this.value = '';
+        return;
+    }
+    
+    // Если первая цифра не 7 или 8 - добавляем 7
+    if (!['7', '8'].includes(digits[0])) {
+        digits = '7' + digits;
+    }
+    
+    // Если первая цифра 8 - заменяем на 7
+    if (digits[0] === '8') {
+        digits = '7' + digits.slice(1);
+    }
+    
+    // Форматируем в красивый вид: +7 (XXX) XXX-XX-XX
+    let formatted = '+7';
+    
+    if (digits.length > 1) {
+        formatted += ' (' + digits.slice(1, 4);
+    }
+    if (digits.length >= 4) {
+        formatted += ') ' + digits.slice(4, 7);
+    }
+    if (digits.length >= 7) {
+        formatted += '-' + digits.slice(7, 9);
+    }
+    if (digits.length >= 9) {
+        formatted += '-' + digits.slice(9, 11);
+    }
+    
+    this.value = formatted;
+    
+    // Вызываем валидацию
+    validateFields();
+});
+
+// === ФОРМАТИРОВАНИЕ ТЕЛЕФОНА ===
+phoneInput.addEventListener('input', function() {
+    // Сохраняем позицию курсора
+    const cursorPos = this.selectionStart;
+    
+    // Удаляем все не-цифры
+    let digits = this.value.replace(/\D/g, '');
+    
+    // Ограничиваем 11 цифрами
+    if (digits.length > 11) {
+        digits = digits.slice(0, 11);
+    }
+    
+    // Если цифр нет — очищаем поле
+    if (digits.length === 0) {
+        this.value = '';
+        validateFields();
+        return;
+    }
+    
+    // Если первая цифра не 7 или 8 — подставляем 7
+    if (!['7', '8'].includes(digits[0])) {
+        digits = '7' + digits;
+    }
+    
+    // Если первая цифра 8 — заменяем на 7
+    if (digits[0] === '8') {
+        digits = '7' + digits.slice(1);
+    }
+    
+    // Форматируем
+    let formatted = '+7';
+    
+    if (digits.length > 1) {
+        formatted += ' (' + digits.slice(1, 4);
+    }
+    if (digits.length >= 4) {
+        formatted += ') ' + digits.slice(4, 7);
+    }
+    if (digits.length >= 7) {
+        formatted += '-' + digits.slice(7, 9);
+    }
+    if (digits.length >= 9) {
+        formatted += '-' + digits.slice(9, 11);
+    }
+    
+    this.value = formatted;
+    
+    // Восстанавливаем позицию курсора, если она была в конце
+    if (cursorPos === this.value.length || cursorPos > this.value.length) {
+        this.setSelectionRange(this.value.length, this.value.length);
+    } else {
+        this.setSelectionRange(cursorPos, cursorPos);
+    }
+    
+    validateFields();
+});
+
+// === ОБРАБОТКА BACKSPACE ===
+phoneInput.addEventListener('keydown', function(e) {
+    // Если нажат Backspace
+    if (e.key === 'Backspace') {
+        const cursorPos = this.selectionStart;
+        const value = this.value;
+        
+        // Если курсор в начале — ничего не делаем
+        if (cursorPos === 0) return;
+        
+        // Если курсор стоит на спецсимволе (скобка, дефис, пробел) — перескакиваем через него
+        const charBefore = value[cursorPos - 1];
+        if (['(', ')', '-', ' ', '+'].includes(charBefore)) {
+            // Удаляем спецсимвол и цифру перед ним
+            // Находим позицию предыдущей цифры
+            let newPos = cursorPos - 1;
+            while (newPos > 0 && ['(', ')', '-', ' ', '+'].includes(value[newPos - 1])) {
+                newPos--;
+            }
+            if (newPos > 0) {
+                // Удаляем символ перед курсором
+                const newValue = value.slice(0, newPos - 1) + value.slice(cursorPos);
+                this.value = newValue;
+                this.setSelectionRange(newPos - 1, newPos - 1);
+                
+                // Триггерим событие input для переформатирования
+                const event = new Event('input', { bubbles: true });
+                this.dispatchEvent(event);
+                e.preventDefault();
             }
         }
-        this.value = value;
-        validateFields();
-    });
-
+    }
+});
     // === ОТПРАВКА ЧЕРЕЗ WEB3FORMS ===
     submitBtn.addEventListener('click', async function() {
         if (!validateFields()) return;
