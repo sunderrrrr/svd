@@ -13,7 +13,6 @@
 
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="#hero" class="nav-logo">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -22,14 +21,16 @@
       <span>Свет</span>в Дом
     </a>
     <div class="nav-cta">
-      <a href="#" onclick="openPdModal(event, 'call', 'tel:+79608597766')" class="btn btn-primary btn-sm">
-        <img src="img/phone.svg" alt="" width="16" height="16" class="btn-icon">
-        Позвонить
+      <a href="#" onclick="openPdModal(event, 'consent', null)" class="btn btn-outline btn-sm">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        Согласие ПД
       </a>
     </div>
   </nav>
 
-  <!-- HERO -->
   <section id="hero">
     <div class="hero-bg"></div>
     <canvas id="lightning-canvas"></canvas>
@@ -104,7 +105,6 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section id="services">
     <div class="container">
       <div class="section-label">Услуги</div>
@@ -116,7 +116,6 @@
         <button class="service-tab" data-tab="ur">Юридическим лицам</button>
       </div>
 
-      <!-- FIZ -->
       <div class="services-grid" id="services-fiz">
         <div class="service-card fade-up">
           <div class="service-icon">
@@ -173,7 +172,6 @@
         </div>
       </div>
 
-      <!-- UR -->
       <div class="services-grid" id="services-ur" style="display:none">
         <div class="service-card fade-up">
           <div class="service-icon">
@@ -232,7 +230,6 @@
     </div>
   </section>
 
-  <!-- STEPS -->
   <section id="steps">
     <div class="container">
       <div class="section-label">Процесс</div>
@@ -279,7 +276,6 @@
     </div>
   </section>
 
-  <!-- CASE -->
   <section id="case">
     <div class="container">
       <div class="section-label">Кейс</div>
@@ -324,7 +320,6 @@
     </div>
   </section>
 
-  <!-- CASE MODAL -->
   <div class="modal-overlay" id="caseModal" onclick="if(event.target===this)this.classList.remove('open')">
     <div class="modal">
       <button class="modal-close" onclick="document.getElementById('caseModal').classList.remove('open')">✕</button>
@@ -357,7 +352,6 @@
     </div>
   </div>
 
-  <!-- CALCULATOR -->
   <section id="calc">
     <div class="container">
       <div class="section-label">Калькулятор</div>
@@ -551,7 +545,6 @@
     </div>
   </section>
 
-  <!-- WHY US -->
   <section id="why">
     <div class="container">
       <div class="section-label">Почему мы</div>
@@ -583,7 +576,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="container" style="position:relative;z-index:1">
       <div class="contact-title">Готовы подключиться?</div>
@@ -605,7 +597,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-content">
       <div class="footer-logo">
@@ -624,7 +615,6 @@
     </div>
   </footer>
 
-  <!-- STICKY MOBILE CTA -->
   <div class="sticky-cta">
     <a href="#" onclick="openPdModal(event, 'call', 'tel:+79608597766')" class="btn btn-primary">
       <img src="img/phone.svg" alt="" width="16" height="16" class="btn-icon">
@@ -636,7 +626,6 @@
     </a>
   </div>
 
-  <!-- ===== МОДАЛЬНОЕ ОКНО СОГЛАСИЯ ПД С WEB3FORMS ===== -->
   <div class="pd-modal-overlay" id="pdModal">
     <div class="pd-modal">
       <button class="pd-modal-close" id="pdModalClose">✕</button>
@@ -646,25 +635,22 @@
           <path d="M9 12l2 2 4-4"/>
         </svg>
       </div>
-      <div class="pd-modal-title">Подтверждение контакта</div>
+      <div class="pd-modal-title">Подтверждение согласия на ОПД</div>
       <div class="pd-modal-body">
         <p style="margin-bottom: 1rem;">
           Для связи с Вами нам нужны контактные данные. Заполните поля и дайте согласие на обработку персональных данных.
         </p>
 
-        <!-- ПОЛЕ ФИО -->
         <div class="pd-field">
           <label class="pd-field-label">Ваше ФИО <span class="pd-required">*</span></label>
           <input type="text" class="pd-field-input" id="pdFio" placeholder="Иванов Иван Иванович" required>
         </div>
 
-        <!-- ПОЛЕ ТЕЛЕФОН -->
         <div class="pd-field">
           <label class="pd-field-label">Номер телефона <span class="pd-required">*</span></label>
           <input type="tel" class="pd-field-input" id="pdPhone" placeholder="+7 999 123-45-67" required>
         </div>
 
-        <!-- ГАЛОЧКА СОГЛАСИЯ -->
         <div class="pd-checkbox-wrap">
           <label class="pd-checkbox-label">
             <input type="checkbox" id="pdAgreeCheckbox">
