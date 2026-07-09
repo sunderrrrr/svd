@@ -1,676 +1,1261 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Свет в Дом - Подключение электричества под ключ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&family=Manrope:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no">
-  <title>Свет в Дом - Подключение электричества под ключ</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-  <nav>
-    <a href="#hero" class="nav-logo">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
-      </svg>
-      <span>Свет</span>в Дом
-    </a>
-    <div class="nav-cta">
-      <a href="#" onclick="openPdModal(event, 'consent', null)" class="btn btn-outline btn-sm">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="M9 12l2 2 4-4"/>
+  <body>
+    <nav>
+      <a href="#hero" class="nav-logo">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
         </svg>
-        Согласие ПД
+        <span>Свет</span>в Дом
       </a>
-    </div>
-  </nav>
-
-  <section id="hero">
-    <div class="hero-bg"></div>
-    <canvas id="lightning-canvas"></canvas>
-
-    <div class="hero-lightning-art">
-      <div class="lightning-svg-container">
-        <svg class="abstract-lightning" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M220 20 L180 180 L260 200 L150 360 L240 380 L120 580" stroke="url(#grad1)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9" />
-          <path d="M250 40 L210 160 L280 185 L190 330 L260 355 L160 540" stroke="url(#grad2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.6" />
-          <path d="M190 80 L160 210 L230 240 L140 400 L220 420 L100 570" stroke="#ff1a40" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.4" />
-          <defs>
-            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#ff1a40" stop-opacity="0.2" />
-              <stop offset="50%" stop-color="#e8002a" stop-opacity="0.9" />
-              <stop offset="100%" stop-color="#c0001e" stop-opacity="0.3" />
-            </linearGradient>
-            <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#ff1a40" stop-opacity="0.1" />
-              <stop offset="60%" stop-color="#ff1a40" stop-opacity="0.7" />
-              <stop offset="100%" stop-color="#c0001e" stop-opacity="0.1" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-    </div>
-    <div class="hero-photo-gradient"></div>
-
-    <div class="hero-content">
-      <div class="hero-tag">
-        <div class="hero-tag-dot"></div>
-        Работаем по всей России
-      </div>
-      <h1>
-        Подключение<br>
-        электричества<br>
-        <span class="accent">под ключ </span>до <span class="accent">150кВт</span>
-      </h1>
-      <p class="hero-sub">
-        Юридическое сопровождение технологического присоединения
-      </p>
-      <div class="hero-cta">
-        <a href="#" onclick="openPdModal(event, 'call', 'tel:+79608597766')" class="btn btn-primary btn-lg">
-          <img src="img/phone.svg" alt="" width="20" height="20" class="btn-icon">
-          Позвонить
-        </a>
-        <a href="#" onclick="openPdModal(event, 'tg', 'https://t.me/USERNAME')" class="btn btn-outline btn-lg">
-          <img src="img/telegram.svg" alt="" width="20" height="20" class="btn-icon">
-          Telegram
-        </a>
-        <a href="#" onclick="openPdModal(event, 'max', 'https://max.ru/u/f9LHodD0cOKyi7_LiOBojwa55eY8CKw8T33xRxPtAy-Ldz02JZeBgrfp-gU')" class="btn btn-outline btn-lg">
-          <img src="img/max.svg" alt="" width="20" height="20" class="btn-icon">
-          MAX
-        </a>
-      </div>
-
-      <div class="hero-anchors">
-        <button class="hero-anchor-btn" data-scroll-to="services-fiz">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
+      <div class="nav-cta">
+        <a
+          href="#"
+          onclick="openPdModal(event, 'consent', null)"
+          class="btn btn-consent btn-sm"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="M9 12l2 2 4-4" />
           </svg>
-          Хочу подключить дом
-        </button>
-        <button class="hero-anchor-btn" data-scroll-to="services-ur">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="20" height="14" rx="2" />
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+          Согласие ПД
+        </a>
+      </div>
+    </nav>
+
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <canvas id="lightning-canvas"></canvas>
+
+      <div class="hero-lightning-art">
+        <div class="lightning-svg-container">
+          <svg
+            class="abstract-lightning"
+            viewBox="0 0 400 600"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M220 20 L180 180 L260 200 L150 360 L240 380 L120 580"
+              stroke="url(#grad1)"
+              stroke-width="6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+              opacity="0.9"
+            />
+            <path
+              d="M250 40 L210 160 L280 185 L190 330 L260 355 L160 540"
+              stroke="url(#grad2)"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+              opacity="0.6"
+            />
+            <path
+              d="M190 80 L160 210 L230 240 L140 400 L220 420 L100 570"
+              stroke="#ff1a40"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+              opacity="0.4"
+            />
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff1a40" stop-opacity="0.2" />
+                <stop offset="50%" stop-color="#e8002a" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#c0001e" stop-opacity="0.3" />
+              </linearGradient>
+              <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ff1a40" stop-opacity="0.1" />
+                <stop offset="60%" stop-color="#ff1a40" stop-opacity="0.7" />
+                <stop offset="100%" stop-color="#c0001e" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
           </svg>
-          Хочу подключить бизнес
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <section id="services">
-    <div class="container">
-      <div class="section-label">Услуги</div>
-      <h2>Чем мы занимаемся</h2>
-      <p class="section-desc">Полное юридическое сопровождение на всех этапах подключения к электросети</p>
-
-      <div class="services-tabs">
-        <button class="service-tab active" data-tab="fiz">Физическим лицам</button>
-        <button class="service-tab" data-tab="ur">Юридическим лицам</button>
-      </div>
-
-      <div class="services-grid" id="services-fiz">
-        <div class="service-card fade-up">
-          <div class="service-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
-            </svg>
-          </div>
-          <div class="service-title">Новое подключение</div>
-          <div class="service-desc">Для частных домов и участков до 15 кВт. Оформляем документы «под ключ»</div>
-          <button onclick="scrollToCalc('connect')" class="btn btn-outline btn-sm service-cta-btn">
-            Узнать стоимость
-          </button>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
-            </svg>
-          </div>
-          <div class="service-title">Увеличение мощности</div>
-          <div class="service-desc">Увеличим мощность до 150 кВт с соблюдением всех льготных ставок</div>
-          <button onclick="scrollToCalc('connect')" class="btn btn-outline btn-sm service-cta-btn">
-            Узнать стоимость
-          </button>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-              <polyline points="14 2 14 8 20 8" />
-              <line x1="16" y1="13" x2="8" y2="13" />
-              <line x1="16" y1="17" x2="8" y2="17" />
-              <polyline points="10 9 9 9 8 9" />
-            </svg>
-          </div>
-          <div class="service-title">Переоформление документов</div>
-          <div class="service-desc">При смене собственника, купле‑продаже, дарении или наследовании</div>
-          <button onclick="scrollToCalc('connect')" class="btn btn-outline btn-sm service-cta-btn">
-            Узнать стоимость
-          </button>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 20h9" />
-              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-            </svg>
-          </div>
-          <div class="service-title">Обжалование в суде</div>
-          <div class="service-desc">Заставим сетевую организацию выплатить компенсации <strong class="accent">в вашу пользу</strong></div>
-          <button onclick="scrollToCalc('claim')" class="btn btn-outline btn-sm service-cta-btn">
-            Узнать стоимость
-          </button>
         </div>
       </div>
+      <div class="hero-photo-gradient"></div>
 
-      <div class="services-grid" id="services-ur" style="display:none">
-        <div class="service-card fade-up">
-          <div class="service-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
-            </svg>
-          </div>
-          <div class="service-title">Новое подключение бизнеса</div>
-          <div class="service-desc">Объекты до 150 кВт. Подготовка и подача заявки, техусловия, договор</div>
-          <button onclick="scrollToCalc('connect')" class="btn btn-outline btn-sm service-cta-btn">
-            Узнать стоимость
-          </button>
+      <div class="hero-content">
+        <div class="hero-tag">
+          <div class="hero-tag-dot"></div>
+          Работаем по всей России
         </div>
-        <div class="service-card fade-up">
-          <div class="service-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
-            </svg>
-          </div>
-          <div class="service-title">Увеличение мощности (юр. лица)</div>
-          <div class="service-desc">Увеличение до 150 кВт и выше с юридическим сопровождением</div>
-          <button onclick="scrollToCalc('connect')" class="btn btn-outline btn-sm service-cta-btn">
-            Узнать стоимость
-          </button>
+        <h1>
+          Подключение<br />
+          электричества<br />
+          <span class="accent">под ключ </span>до
+          <span class="accent">150кВт</span>
+        </h1>
+        <p class="hero-sub">
+          Юридическое сопровождение технологического присоединения
+        </p>
+        <div class="hero-cta">
+          <a
+            href="#"
+            onclick="openPdModal(event, 'call', 'tel:+79608597766')"
+            class="btn btn-primary btn-lg"
+          >
+            <img
+              src="img/phone.svg"
+              alt=""
+              width="20"
+              height="20"
+              class="btn-icon"
+            />
+            Позвонить
+          </a>
+          <a
+            href="#"
+            onclick="openPdModal(event, 'tg', 'https://t.me/USERNAME')"
+            class="btn btn-outline btn-lg"
+          >
+            <img
+              src="img/telegram.svg"
+              alt=""
+              width="20"
+              height="20"
+              class="btn-icon"
+            />
+            Telegram
+          </a>
+          <a
+            href="#"
+            onclick="
+              openPdModal(
+                event,
+                'max',
+                'https://max.ru/u/f9LHodD0cOKyi7_LiOBojwa55eY8CKw8T33xRxPtAy-Ldz02JZeBgrfp-gU',
+              )
+            "
+            class="btn btn-outline btn-lg"
+          >
+            <img
+              src="img/max.svg"
+              alt=""
+              width="20"
+              height="20"
+              class="btn-icon"
+            />
+            MAX
+          </a>
         </div>
-        <div class="service-card fade-up">
-          <div class="service-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-              <polyline points="14 2 14 8 20 8" />
-              <line x1="16" y1="13" x2="8" y2="13" />
-              <line x1="16" y1="17" x2="8" y2="17" />
-              <polyline points="10 9 9 9 8 9" />
+
+        <div class="hero-anchors">
+          <button class="hero-anchor-btn" data-scroll-to="services-fiz">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
-          </div>
-          <div class="service-title">Переоформление документов</div>
-          <div class="service-desc">Переоформление договоров энергоснабжения при реорганизации или смене собственника</div>
-          <button onclick="scrollToCalc('connect')" class="btn btn-outline btn-sm service-cta-btn">
-            Узнать стоимость
+            Хочу подключить дом
           </button>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 20h9" />
-              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+          <button class="hero-anchor-btn" data-scroll-to="services-ur">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="7" width="20" height="14" rx="2" />
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
             </svg>
-          </div>
-          <div class="service-title">Обжалование / взыскание</div>
-          <div class="service-desc">Оспаривание незаконных счетов, взыскание убытков с сетевой организации</div>
-          <button onclick="scrollToCalc('claim')" class="btn btn-outline btn-sm service-cta-btn">
-            Узнать стоимость
+            Хочу подключить бизнес
           </button>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="steps">
-    <div class="container">
-      <div class="section-label">Процесс</div>
-      <h2>Как мы работаем</h2>
-      <p class="section-desc">Прозрачный процесс без сюрпризов. Вы знаете что происходит на каждом этапе</p>
-
-      <div class="steps-track">
-        <div class="step fade-up">
-          <div class="step-num">01</div>
-          <div>
-            <div class="step-title">Звонок и консультация</div>
-            <div class="step-desc">Обсуждаем задачу, регион, мощность. Даём предварительный расчёт стоимости</div>
-          </div>
-        </div>
-        <div class="step fade-up">
-          <div class="step-num">02</div>
-          <div>
-            <div class="step-title">Заявка в сетевую организацию</div>
-            <div class="step-desc">Готовим и подаём заявку в сетевую организацию. Контролируем сроки ответа</div>
-          </div>
-        </div>
-        <div class="step fade-up">
-          <div class="step-num">03</div>
-          <div>
-            <div class="step-title">Юридическое сопровождение</div>
-            <div class="step-desc">Отстаиваем ваши права, минимизируем стоимость, ведём переговоры с сетевой</div>
-          </div>
-        </div>
-        <div class="step fade-up">
-          <div class="step-num">04</div>
-          <div>
-            <div class="step-title">Получение документов</div>
-            <div class="step-desc">Получаем договор ТП, технические условия и акт об осуществлении присоединения</div>
-          </div>
-        </div>
-        <div class="step fade-up">
-          <div class="step-num">05</div>
-          <div>
-            <div class="step-title">Фактическое подключение</div>
-            <div class="step-desc">Контролируем подачу напряжения и заключение договора энергоснабжения. Свет в доме!</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="case">
-    <div class="container">
-      <div class="section-label">Кейс</div>
-      <h2>Снизили госпошлину в 1000 раз</h2>
-      <p class="section-desc">Реальный результат для нашего клиента - подтверждён документами</p>
-
-      <div class="case-card fade-up">
-        <div class="case-numbers">
-          <div class="case-num">
-            <div class="case-num-val before">67 000 000 ₽</div>
-            <div class="case-num-label">Изначальный счёт</div>
-          </div>
-          <div class="case-arrow">→</div>
-          <div class="case-num">
-            <div class="case-num-val after">67 000 ₽</div>
-            <div class="case-num-label">Итоговая сумма</div>
-          </div>
-        </div>
-
-        <div class="case-saving">✦ Экономия 66 933 000 ₽</div>
-
-        <p class="case-text">
-          Клиент - собственник промышленного объекта - обратился к нам после того, как сетевая организация выставила
-          счёт на технологическое присоединение в размере <strong style="color:var(--text)">67 миллионов рублей</strong>.
-          При изучении дела нами было выявлено, что расчёт произведён с нарушением действующих нормативов: тариф применён неверно,
-          льготная ставка не учтена, методология расчёта противоречит Постановлению Правительства РФ.<br><br>
-          В результате досудебного урегулирования и подготовки правовой позиции стоимость технологического присоединения
-          была снижена до <strong style="color:var(--red3)">67 000 рублей</strong>.
+    <section id="services">
+      <div class="container">
+        <div class="section-label">Услуги</div>
+        <h2>Чем мы занимаемся</h2>
+        <p class="section-desc">
+          Полное юридическое сопровождение на всех этапах подключения к
+          электросети
         </p>
 
-        <button class="btn btn-outline" onclick="document.getElementById('caseModal').classList.add('open')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-            <line x1="16" y1="13" x2="8" y2="13" />
-            <line x1="16" y1="17" x2="8" y2="17" />
-            <polyline points="10 9 9 9 8 9" />
-          </svg>
-          Смотреть документы
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <div class="modal-overlay" id="caseModal" onclick="if(event.target===this)this.classList.remove('open')">
-    <div class="modal">
-      <button class="modal-close" onclick="document.getElementById('caseModal').classList.remove('open')">✕</button>
-      <div class="modal-title">Документы по кейсу: снижение госпошлины с 67 млн до 67 тыс. ₽</div>
-      <div class="modal-body">
-        Ниже представлены официальные документы, подтверждающие факт снижения стоимости технологического присоединения.
-        Персональные данные клиента скрыты с его согласия.
-      </div>
-      <div class="modal-img-placeholder">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-          <polyline points="14 2 14 8 20 8" />
-        </svg><br>
-        Документ 1 - Первоначальный счёт от сетевой организации
-      </div>
-      <div class="modal-img-placeholder">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-          <polyline points="14 2 14 8 20 8" />
-        </svg><br>
-        Документ 2 - Правовая позиция / досудебная претензия
-      </div>
-      <div class="modal-img-placeholder">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-          <polyline points="14 2 14 8 20 8" />
-        </svg><br>
-        Документ 3 - Итоговый договор ТП на 67 000 ₽
-      </div>
-    </div>
-  </div>
-
-  <section id="calc">
-    <div class="container">
-      <div class="section-label">Калькулятор</div>
-      <h2>Примерная стоимость</h2>
-      <p class="section-desc">Рассчитайте примерную стоимость для вашего региона</p>
-
-      <div class="calc-wrap fade-up" id="calc-containter">
-        <div class="calc-tabs">
-          <button class="calc-tab active" data-calc-mode="connect">Подключение к сетям</button>
-          <button class="calc-tab" data-calc-mode="claim">Возврат денег через суд</button>
+        <div class="services-tabs">
+          <button class="service-tab active" data-tab="fiz">
+            Физическим лицам
+          </button>
+          <button class="service-tab" data-tab="ur">Юридическим лицам</button>
         </div>
 
-        <div class="calc-grid">
-          <div>
-            <div class="calc-field">
-              <label class="calc-label">Регион</label>
-              <select class="calc-select" id="calc-region">
-                <option value="">Загрузка регионов...</option>
-              </select>
+        <div class="services-grid" id="services-fiz">
+          <div class="service-card fade-up">
+            <div class="service-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
+              </svg>
             </div>
+            <div class="service-title">Новое подключение</div>
+            <div class="service-desc">
+              Для частных домов и участков до 15 кВт. Оформляем документы «под
+              ключ»
+            </div>
+            <button
+              onclick="scrollToCalc('connect')"
+              class="btn btn-outline btn-sm service-cta-btn"
+            >
+              Узнать стоимость
+            </button>
+          </div>
+          <div class="service-card fade-up">
+            <div class="service-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
+              </svg>
+            </div>
+            <div class="service-title">Увеличение мощности</div>
+            <div class="service-desc">
+              Увеличим мощность до 150 кВт с соблюдением всех льготных ставок
+            </div>
+            <button
+              onclick="scrollToCalc('connect')"
+              class="btn btn-outline btn-sm service-cta-btn"
+            >
+              Узнать стоимость
+            </button>
+          </div>
+          <div class="service-card fade-up">
+            <div class="service-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <div class="service-title">Переоформление документов</div>
+            <div class="service-desc">
+              При смене собственника, купле‑продаже, дарении или наследовании
+            </div>
+            <button
+              onclick="scrollToCalc('connect')"
+              class="btn btn-outline btn-sm service-cta-btn"
+            >
+              Узнать стоимость
+            </button>
+          </div>
+          <div class="service-card fade-up">
+            <div class="service-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 20h9" />
+                <path
+                  d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
+                />
+              </svg>
+            </div>
+            <div class="service-title">Обжалование в суде</div>
+            <div class="service-desc">
+              Заставим сетевую организацию выплатить компенсации
+              <strong class="accent">в вашу пользу</strong>
+            </div>
+            <button
+              onclick="scrollToCalc('claim')"
+              class="btn btn-outline btn-sm service-cta-btn"
+            >
+              Узнать стоимость
+            </button>
+          </div>
+        </div>
 
-            <div class="calc-field">
-              <label class="calc-label">Тип заявителя</label>
-              <div class="type-toggle">
-                <button class="type-btn active" id="type-fiz">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                  Физическое лицо
-                </button>
-                <button class="type-btn" id="type-ip">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="7" width="20" height="14" rx="2" />
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                  </svg>
-                  ИП / ООО
-                </button>
+        <div class="services-grid" id="services-ur" style="display: none">
+          <div class="service-card fade-up">
+            <div class="service-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
+              </svg>
+            </div>
+            <div class="service-title">Новое подключение бизнеса</div>
+            <div class="service-desc">
+              Объекты до 150 кВт. Подготовка и подача заявки, техусловия,
+              договор
+            </div>
+            <button
+              onclick="scrollToCalc('connect')"
+              class="btn btn-outline btn-sm service-cta-btn"
+            >
+              Узнать стоимость
+            </button>
+          </div>
+          <div class="service-card fade-up">
+            <div class="service-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
+              </svg>
+            </div>
+            <div class="service-title">Увеличение мощности (юр. лица)</div>
+            <div class="service-desc">
+              Увеличение до 150 кВт и выше с юридическим сопровождением
+            </div>
+            <button
+              onclick="scrollToCalc('connect')"
+              class="btn btn-outline btn-sm service-cta-btn"
+            >
+              Узнать стоимость
+            </button>
+          </div>
+          <div class="service-card fade-up">
+            <div class="service-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <div class="service-title">Переоформление документов</div>
+            <div class="service-desc">
+              Переоформление договоров энергоснабжения при реорганизации или
+              смене собственника
+            </div>
+            <button
+              onclick="scrollToCalc('connect')"
+              class="btn btn-outline btn-sm service-cta-btn"
+            >
+              Узнать стоимость
+            </button>
+          </div>
+          <div class="service-card fade-up">
+            <div class="service-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 20h9" />
+                <path
+                  d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
+                />
+              </svg>
+            </div>
+            <div class="service-title">Обжалование / взыскание</div>
+            <div class="service-desc">
+              Оспаривание незаконных счетов, взыскание убытков с сетевой
+              организации
+            </div>
+            <button
+              onclick="scrollToCalc('claim')"
+              class="btn btn-outline btn-sm service-cta-btn"
+            >
+              Узнать стоимость
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="steps">
+      <div class="container">
+        <div class="section-label">Процесс</div>
+        <h2>Как мы работаем</h2>
+        <p class="section-desc">
+          Прозрачный процесс без сюрпризов. Вы знаете что происходит на каждом
+          этапе
+        </p>
+
+        <div class="steps-track">
+          <div class="step fade-up">
+            <div class="step-num">01</div>
+            <div>
+              <div class="step-title">Звонок и консультация</div>
+              <div class="step-desc">
+                Обсуждаем задачу, регион, мощность. Даём предварительный расчёт
+                стоимости
               </div>
             </div>
+          </div>
+          <div class="step fade-up">
+            <div class="step-num">02</div>
+            <div>
+              <div class="step-title">Заявка в сетевую организацию</div>
+              <div class="step-desc">
+                Готовим и подаём заявку в сетевую организацию. Контролируем
+                сроки ответа
+              </div>
+            </div>
+          </div>
+          <div class="step fade-up">
+            <div class="step-num">03</div>
+            <div>
+              <div class="step-title">Юридическое сопровождение</div>
+              <div class="step-desc">
+                Отстаиваем ваши права, минимизируем стоимость, ведём переговоры
+                с сетевой
+              </div>
+            </div>
+          </div>
+          <div class="step fade-up">
+            <div class="step-num">04</div>
+            <div>
+              <div class="step-title">Получение документов</div>
+              <div class="step-desc">
+                Получаем договор ТП, технические условия и акт об осуществлении
+                присоединения
+              </div>
+            </div>
+          </div>
+          <div class="step fade-up">
+            <div class="step-num">05</div>
+            <div>
+              <div class="step-title">Фактическое подключение</div>
+              <div class="step-desc">
+                Контролируем подачу напряжения и заключение договора
+                энергоснабжения. Свет в доме!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div id="connect-fields">
+    <section id="case">
+      <div class="container">
+        <div class="section-label">Кейс</div>
+        <h2>Снизили госпошлину в 1000 раз</h2>
+        <p class="section-desc">
+          Реальный результат для нашего клиента - подтверждён документами
+        </p>
+
+        <div class="case-card fade-up">
+          <div class="case-numbers">
+            <div class="case-num">
+              <div class="case-num-val before">67 000 000 ₽</div>
+              <div class="case-num-label">Изначальный счёт</div>
+            </div>
+            <div class="case-arrow">→</div>
+            <div class="case-num">
+              <div class="case-num-val after">67 000 ₽</div>
+              <div class="case-num-label">Итоговая сумма</div>
+            </div>
+          </div>
+
+          <div class="case-saving">✦ Экономия 66 933 000 ₽</div>
+
+          <p class="case-text">
+            Клиент - собственник промышленного объекта - обратился к нам после
+            того, как сетевая организация выставила счёт на технологическое
+            присоединение в размере
+            <strong style="color: var(--text)">67 миллионов рублей</strong>. При
+            изучении дела нами было выявлено, что расчёт произведён с нарушением
+            действующих нормативов: тариф применён неверно, льготная ставка не
+            учтена, методология расчёта противоречит Постановлению Правительства
+            РФ.<br /><br />
+            В результате досудебного урегулирования и подготовки правовой
+            позиции стоимость технологического присоединения была снижена до
+            <strong style="color: var(--red3)">67 000 рублей</strong>.
+          </p>
+
+          <button
+            class="btn btn-outline"
+            onclick="document.getElementById('caseModal').classList.add('open')"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
+            Смотреть документы
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div
+      class="modal-overlay"
+      id="caseModal"
+      onclick="if (event.target === this) this.classList.remove('open');"
+    >
+      <div class="modal">
+        <button
+          class="modal-close"
+          onclick="
+            document.getElementById('caseModal').classList.remove('open')
+          "
+        >
+          ✕
+        </button>
+        <div class="modal-title">
+          Документы по кейсу: снижение госпошлины с 67 млн до 67 тыс. ₽
+        </div>
+        <div class="modal-body">
+          Ниже представлены официальные документы, подтверждающие факт снижения
+          стоимости технологического присоединения. Персональные данные клиента
+          скрыты с его согласия.
+        </div>
+        <div class="modal-img-placeholder">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+            />
+            <polyline points="14 2 14 8 20 8" /></svg
+          ><br />
+          Документ 1 - Первоначальный счёт от сетевой организации
+        </div>
+        <div class="modal-img-placeholder">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+            />
+            <polyline points="14 2 14 8 20 8" /></svg
+          ><br />
+          Документ 2 - Правовая позиция / досудебная претензия
+        </div>
+        <div class="modal-img-placeholder">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+            />
+            <polyline points="14 2 14 8 20 8" /></svg
+          ><br />
+          Документ 3 - Итоговый договор ТП на 67 000 ₽
+        </div>
+      </div>
+    </div>
+
+    <section id="calc">
+      <div class="container">
+        <div class="section-label">Калькулятор</div>
+        <h2>Примерная стоимость</h2>
+        <p class="section-desc">
+          Рассчитайте примерную стоимость для вашего региона
+        </p>
+
+        <div class="calc-wrap fade-up" id="calc-containter">
+          <div class="calc-tabs">
+            <button class="calc-tab active" data-calc-mode="connect">
+              Подключение к сетям
+            </button>
+            <button class="calc-tab" data-calc-mode="claim">
+              Возврат денег через суд
+            </button>
+          </div>
+
+          <div class="calc-grid">
+            <div>
               <div class="calc-field">
-                <label class="calc-label">Населённый пункт</label>
-                <select class="calc-select" id="calc-locality">
-                  <option value="city">Город</option>
-                  <option value="village">Село</option>
+                <label class="calc-label">Регион</label>
+                <select class="calc-select" id="calc-region">
+                  <option value="">Загрузка регионов...</option>
                 </select>
               </div>
 
               <div class="calc-field">
-                <label class="calc-label">Выберите мощность</label>
-                <div class="preset-pills" id="preset-pills-fiz">
-                  <button class="preset-pill" data-kw="6">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <label class="calc-label">Тип заявителя</label>
+                <div class="type-toggle">
+                  <button class="type-btn active" id="type-fiz">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                      />
                       <polyline points="9 22 9 12 15 12 15 22" />
                     </svg>
-                    Дом 6 кВт
+                    Физическое лицо
                   </button>
-                  <button class="preset-pill" data-kw="15">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                      <polyline points="9 22 9 12 15 12 15 22" />
-                    </svg>
-                    Дом 15 кВт
-                  </button>
-                </div>
-                <div class="preset-pills" id="preset-pills-ip" style="display:none">
-                  <button class="preset-pill" data-kw="150">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <button class="type-btn" id="type-ip">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
                       <rect x="2" y="7" width="20" height="14" rx="2" />
                       <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                     </svg>
-                    Бизнес 150 кВт
+                    ИП / ООО
                   </button>
                 </div>
               </div>
 
-              <div class="calc-field">
-                <label class="calc-label">Расстояние до линии (м)</label>
-                <input type="number" class="calc-input" id="calc-distance" placeholder="Например, 15" min="0" value="">
+              <div id="connect-fields">
+                <div class="calc-field">
+                  <label class="calc-label">Населённый пункт</label>
+                  <select class="calc-select" id="calc-locality">
+                    <option value="city">Город</option>
+                    <option value="village">Село</option>
+                  </select>
+                </div>
+
+                <div class="calc-field">
+                  <label class="calc-label">Выберите мощность</label>
+                  <div class="preset-pills" id="preset-pills-fiz">
+                    <button class="preset-pill" data-kw="6">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                        />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                      </svg>
+                      Дом 6 кВт
+                    </button>
+                    <button class="preset-pill" data-kw="15">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                        />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                      </svg>
+                      Дом 15 кВт
+                    </button>
+                  </div>
+                  <div
+                    class="preset-pills"
+                    id="preset-pills-ip"
+                    style="display: none"
+                  >
+                    <button class="preset-pill" data-kw="150">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <rect x="2" y="7" width="20" height="14" rx="2" />
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                      </svg>
+                      Бизнес 150 кВт
+                    </button>
+                  </div>
+                </div>
+
+                <div class="calc-field">
+                  <label class="calc-label">Расстояние до линии (м)</label>
+                  <input
+                    type="number"
+                    class="calc-input"
+                    id="calc-distance"
+                    placeholder="Например, 15"
+                    min="0"
+                    value=""
+                  />
+                </div>
+              </div>
+
+              <div id="claim-fields" style="display: none">
+                <div class="calc-field">
+                  <label class="calc-label">Дата заключения договора</label>
+                  <input
+                    type="date"
+                    class="calc-input"
+                    id="claim-contract-date"
+                    value="2025-03-03"
+                  />
+                </div>
+                <div class="calc-field">
+                  <label class="calc-label"
+                    >Оплаченная по договору сумма (₽)</label
+                  >
+                  <input
+                    type="number"
+                    class="calc-input"
+                    id="claim-paid-amount"
+                    placeholder="Например, 100000"
+                    min="0"
+                    value="100000"
+                  />
+                </div>
+                <div class="calc-field">
+                  <label class="calc-label">Дата расчёта</label>
+                  <input
+                    type="date"
+                    class="calc-input"
+                    id="claim-calc-date"
+                    value="2026-04-30"
+                  />
+                </div>
+                <p class="calc-hint">
+                  Расчёт штрафов и пеней согласно действующему законодательству
+                </p>
               </div>
             </div>
 
-            <div id="claim-fields" style="display:none">
-              <div class="calc-field">
-                <label class="calc-label">Дата заключения договора</label>
-                <input type="date" class="calc-input" id="claim-contract-date" value="2025-03-03">
+            <div class="calc-result">
+              <div>
+                <div class="calc-result-label">Расчёт стоимости</div>
+                <div class="calc-result-rows" id="calc-rows">
+                  <div class="calc-row">
+                    <span class="calc-row-label">Регион</span>
+                    <span
+                      class="calc-row-val"
+                      id="r-region"
+                      style="color: var(--text3)"
+                      >не выбран</span
+                    >
+                  </div>
+                  <div class="calc-row">
+                    <span class="calc-row-label">Нас. пункт</span>
+                    <span class="calc-row-val" id="r-locality">—</span>
+                  </div>
+                  <div class="calc-row">
+                    <span class="calc-row-label">Расстояние</span>
+                    <span class="calc-row-val" id="r-distance">—</span>
+                  </div>
+
+                  <div id="result-fiz" style="display: none">
+                    <div
+                      class="calc-row"
+                      style="
+                        border-top: 1px solid rgba(192, 0, 30, 0.2);
+                        padding-top: 0.75rem;
+                      "
+                    >
+                      <span
+                        class="calc-row-label"
+                        style="color: var(--red3); font-weight: 600"
+                        >Льготный тариф (≤ 15 м)</span
+                      >
+                      <span class="calc-row-val"></span>
+                    </div>
+                    <div class="calc-row">
+                      <span class="calc-row-label">1 фаза, 6 кВт</span>
+                      <span class="calc-row-val" id="r-tariff-6">—</span>
+                    </div>
+                    <div class="calc-row">
+                      <span class="calc-row-label">3 фазы, 15 кВт</span>
+                      <span class="calc-row-val" id="r-tariff-15">—</span>
+                    </div>
+                    <div
+                      class="calc-row"
+                      style="
+                        border-top: 1px solid rgba(192, 0, 30, 0.2);
+                        padding-top: 0.75rem;
+                      "
+                    >
+                      <span class="calc-row-label" style="color: var(--text2)"
+                        >Строительный тариф (> 15 м)</span
+                      >
+                      <span class="calc-row-val" style="color: var(--text2)"
+                        >по телефону</span
+                      >
+                    </div>
+                  </div>
+
+                  <div id="result-ip" style="display: none">
+                    <div
+                      class="calc-row"
+                      style="
+                        border-top: 1px solid rgba(192, 0, 30, 0.2);
+                        padding-top: 0.75rem;
+                      "
+                    >
+                      <span class="calc-row-label">3 фазы, 150 кВт</span>
+                      <span class="calc-row-val" id="r-tariff-150">—</span>
+                    </div>
+                  </div>
+
+                  <div id="result-claim" style="display: none">
+                    <div class="calc-row">
+                      <span class="calc-row-label">Оплаченная сумма</span>
+                      <span class="calc-row-val" id="r-paid">—</span>
+                    </div>
+                    <div class="calc-row">
+                      <span class="calc-row-label">Дни просрочки</span>
+                      <span class="calc-row-val" id="r-overdue">—</span>
+                    </div>
+                    <div class="calc-row">
+                      <span class="calc-row-label">Штрафы (0,25% за день)</span>
+                      <span class="calc-row-val" id="r-claim-penalty">—</span>
+                    </div>
+                    <div class="calc-row">
+                      <span class="calc-row-label">Моральный вред</span>
+                      <span class="calc-row-val" id="r-claim-moral">—</span>
+                    </div>
+                    <div class="calc-row">
+                      <span class="calc-row-label">Потребительский штраф</span>
+                      <span class="calc-row-val" id="r-claim-fine">—</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="calc-total-row">
+                  <span class="calc-total-label" id="total-label"
+                    >Итого ~
+                  </span>
+                  <span class="calc-total-val" id="r-total">—</span>
+                </div>
+
+                <p class="calc-hint" id="r-hint">
+                  Выберите регион и мощность для расчёта. Точная стоимость после
+                  консультации.
+                </p>
               </div>
-              <div class="calc-field">
-                <label class="calc-label">Оплаченная по договору сумма (₽)</label>
-                <input type="number" class="calc-input" id="claim-paid-amount" placeholder="Например, 100000" min="0" value="100000">
+
+              <div class="calc-actions">
+                <a
+                  href="#"
+                  onclick="openPdModal(event, 'call', 'tel:+79608597766')"
+                  class="btn btn-primary"
+                >
+                  <img
+                    src="img/phone.svg"
+                    alt=""
+                    width="16"
+                    height="16"
+                    class="btn-icon"
+                  />
+                  Позвонить для уточнения
+                </a>
+                <a
+                  href="#"
+                  onclick="openPdModal(event, 'tg', 'https://t.me/USERNAME')"
+                  class="btn btn-outline"
+                >
+                  <img
+                    src="img/telegram.svg"
+                    alt=""
+                    width="16"
+                    height="16"
+                    class="btn-icon"
+                  />
+                  Написать в Telegram
+                </a>
               </div>
-              <div class="calc-field">
-                <label class="calc-label">Дата расчёта</label>
-                <input type="date" class="calc-input" id="claim-calc-date" value="2026-04-30">
-              </div>
-              <p class="calc-hint">Расчёт штрафов и пеней согласно действующему законодательству</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="calc-result">
-            <div>
-              <div class="calc-result-label">Расчёт стоимости</div>
-              <div class="calc-result-rows" id="calc-rows">
-                <div class="calc-row">
-                  <span class="calc-row-label">Регион</span>
-                  <span class="calc-row-val" id="r-region" style="color:var(--text3)">не выбран</span>
-                </div>
-                <div class="calc-row">
-                  <span class="calc-row-label">Нас. пункт</span>
-                  <span class="calc-row-val" id="r-locality">—</span>
-                </div>
-                <div class="calc-row">
-                  <span class="calc-row-label">Расстояние</span>
-                  <span class="calc-row-val" id="r-distance">—</span>
-                </div>
+    <section id="why">
+      <div class="container">
+        <div class="section-label">Почему мы</div>
+        <h2>Гарантии и преимущества</h2>
+        <p class="section-desc">
+          Работаем в правовом поле, не обещаем невозможного, но добиваемся
+          максимума
+        </p>
 
-                <div id="result-fiz" style="display:none">
-                  <div class="calc-row" style="border-top:1px solid rgba(192,0,30,0.2); padding-top:0.75rem;">
-                    <span class="calc-row-label" style="color:var(--red3); font-weight:600;">Льготный тариф (≤ 15 м)</span>
-                    <span class="calc-row-val"></span>
-                  </div>
-                  <div class="calc-row">
-                    <span class="calc-row-label">1 фаза, 6 кВт</span>
-                    <span class="calc-row-val" id="r-tariff-6">—</span>
-                  </div>
-                  <div class="calc-row">
-                    <span class="calc-row-label">3 фазы, 15 кВт</span>
-                    <span class="calc-row-val" id="r-tariff-15">—</span>
-                  </div>
-                  <div class="calc-row" style="border-top:1px solid rgba(192,0,30,0.2); padding-top:0.75rem;">
-                    <span class="calc-row-label" style="color:var(--text2);">Строительный тариф (> 15 м)</span>
-                    <span class="calc-row-val" style="color:var(--text2);">по телефону</span>
-                  </div>
-                </div>
-
-                <div id="result-ip" style="display:none">
-                  <div class="calc-row" style="border-top:1px solid rgba(192,0,30,0.2); padding-top:0.75rem;">
-                    <span class="calc-row-label">3 фазы, 150 кВт</span>
-                    <span class="calc-row-val" id="r-tariff-150">—</span>
-                  </div>
-                </div>
-
-                <div id="result-claim" style="display:none">
-                  <div class="calc-row">
-                    <span class="calc-row-label">Оплаченная сумма</span>
-                    <span class="calc-row-val" id="r-paid">—</span>
-                  </div>
-                  <div class="calc-row">
-                    <span class="calc-row-label">Дни просрочки</span>
-                    <span class="calc-row-val" id="r-overdue">—</span>
-                  </div>
-                  <div class="calc-row">
-                    <span class="calc-row-label">Штрафы (0,25% за день)</span>
-                    <span class="calc-row-val" id="r-claim-penalty">—</span>
-                  </div>
-                  <div class="calc-row">
-                    <span class="calc-row-label">Моральный вред</span>
-                    <span class="calc-row-val" id="r-claim-moral">—</span>
-                  </div>
-                  <div class="calc-row">
-                    <span class="calc-row-label">Потребительский штраф</span>
-                    <span class="calc-row-val" id="r-claim-fine">—</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="calc-total-row">
-                <span class="calc-total-label" id="total-label">Итого ~ </span>
-                <span class="calc-total-val" id="r-total">—</span>
-              </div>
-
-              <p class="calc-hint" id="r-hint">Выберите регион и мощность для расчёта. Точная стоимость после консультации.</p>
+        <div class="why-grid">
+          <div class="why-card fade-up">
+            <div class="why-num">01</div>
+            <div class="why-title">38+ регионов РФ</div>
+            <div class="why-desc">
+              Работаем со всеми крупными регионами. Знаем специфику каждой
+              сетевой организации и региональный тариф
             </div>
-
-            <div class="calc-actions">
-              <a href="#" onclick="openPdModal(event, 'call', 'tel:+79608597766')" class="btn btn-primary">
-                <img src="img/phone.svg" alt="" width="16" height="16" class="btn-icon">
-                Позвонить для уточнения
-              </a>
-              <a href="#" onclick="openPdModal(event, 'tg', 'https://t.me/USERNAME')" class="btn btn-outline">
-                <img src="img/telegram.svg" alt="" width="16" height="16" class="btn-icon">
-                Написать в Telegram
-              </a>
+          </div>
+          <div class="why-card fade-up">
+            <div class="why-num">02</div>
+            <div class="why-title">Минимальная стоимость по закону</div>
+            <div class="why-desc">
+              Гарантируем применение всех льгот и минимально возможной ставки
+              госпошлины согласно действующему законодательству
+            </div>
+          </div>
+          <div class="why-card fade-up">
+            <div class="why-num">03</div>
+            <div class="why-title">Оплата за результат</div>
+            <div class="why-desc">
+              Три этапа оплаты привязаны к реальным результатам. Вы не рискуете
+              крупной суммой авансом
+            </div>
+          </div>
+          <div class="why-card fade-up">
+            <div class="why-num">04</div>
+            <div class="why-title">1200+ объектов</div>
+            <div class="why-desc">
+              Обширная судебная практика с частными домами, дачами, ИЖС, СНТ,
+              промышленными и коммерческими объектами
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="why">
-    <div class="container">
-      <div class="section-label">Почему мы</div>
-      <h2>Гарантии и преимущества</h2>
-      <p class="section-desc">Работаем в правовом поле, не обещаем невозможного, но добиваемся максимума</p>
-
-      <div class="why-grid">
-        <div class="why-card fade-up">
-          <div class="why-num">01</div>
-          <div class="why-title">38+ регионов РФ</div>
-          <div class="why-desc">Работаем со всеми крупными регионами. Знаем специфику каждой сетевой организации и региональный тариф</div>
-        </div>
-        <div class="why-card fade-up">
-          <div class="why-num">02</div>
-          <div class="why-title">Минимальная стоимость по закону</div>
-          <div class="why-desc">Гарантируем применение всех льгот и минимально возможной ставки госпошлины согласно действующему законодательству</div>
-        </div>
-        <div class="why-card fade-up">
-          <div class="why-num">03</div>
-          <div class="why-title">Оплата за результат</div>
-          <div class="why-desc">Три этапа оплаты привязаны к реальным результатам. Вы не рискуете крупной суммой авансом</div>
-        </div>
-        <div class="why-card fade-up">
-          <div class="why-num">04</div>
-          <div class="why-title">1200+ объектов</div>
-          <div class="why-desc">Обширная судебная практика с частными домами, дачами, ИЖС, СНТ, промышленными и коммерческими объектами</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container" style="position:relative;z-index:1">
-      <div class="contact-title">Готовы подключиться?</div>
-      <p class="contact-sub">Звоните или пишите - первая консультация бесплатна. Разберём вашу ситуацию, наметим план действий и расчитаем финальную стоимость</p>
-      <div class="contact-btns">
-        <a href="#" onclick="openPdModal(event, 'call', 'tel:+79608597766')" class="btn btn-primary btn-lg">
-          <img src="img/phone.svg" alt="" width="20" height="20" class="btn-icon">
-          Позвонить
-        </a>
-        <a href="#" onclick="openPdModal(event, 'tg', 'https://t.me/USERNAME')" class="btn btn-outline btn-lg">
-          <img src="img/telegram.svg" alt="" width="20" height="20" class="btn-icon">
-          Telegram
-        </a>
-        <a href="#" onclick="openPdModal(event, 'max', 'https://max.ru/u/f9LHodD0cOKyi7_LiOBojwa55eY8CKw8T33xRxPtAy-Ldz02JZeBgrfp-gU')" class="btn btn-outline btn-lg">
-          <img src="img/max.svg" alt="" width="20" height="20" class="btn-icon">
-          MAX
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
-        </svg>
-        <span>Свет</span>в Дом
-      </div>
-      <div class="footer-links">
-        <a href="docs/politics.pdf" target="_blank">Политика обработки персональных данных</a>
-        <span class="footer-divider">|</span>
-        <a href="docs/agree.pdf" target="_blank">Согласие на обработку персональных данных</a>
-        <span class="footer-divider">|</span>
-        <span class="footer-inn">ИП Коротаев В.Р. ИНН 301804520419</span>
-      </div>
-    </div>
-  </footer>
-
-  <div class="sticky-cta">
-    <a href="#" onclick="openPdModal(event, 'call', 'tel:+79608597766')" class="btn btn-primary">
-      <img src="img/phone.svg" alt="" width="16" height="16" class="btn-icon">
-      Позвонить
-    </a>
-    <a href="#" onclick="openPdModal(event, 'tg', 'https://t.me/USERNAME')" class="btn btn-outline">
-      <img src="img/telegram.svg" alt="" width="16" height="16" class="btn-icon">
-      Telegram
-    </a>
-  </div>
-
-  <div class="pd-modal-overlay" id="pdModal">
-    <div class="pd-modal">
-      <button class="pd-modal-close" id="pdModalClose">✕</button>
-      <div class="pd-modal-icon">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="M9 12l2 2 4-4"/>
-        </svg>
-      </div>
-      <div class="pd-modal-title">Подтверждение согласия на ОПД</div>
-      <div class="pd-modal-body">
-        <p style="margin-bottom: 1rem;">
-          Для связи с Вами нам нужны контактные данные. Заполните поля и дайте согласие на обработку персональных данных.
+    <section id="contact">
+      <div class="container" style="position: relative; z-index: 1">
+        <div class="contact-title">Готовы подключиться?</div>
+        <p class="contact-sub">
+          Звоните или пишите - первая консультация бесплатна. Разберём вашу
+          ситуацию, наметим план действий и расчитаем финальную стоимость
         </p>
-
-        <div class="pd-field">
-          <label class="pd-field-label">Ваше ФИО <span class="pd-required">*</span></label>
-          <input type="text" class="pd-field-input" id="pdFio" placeholder="Иванов Иван Иванович" required>
+        <div class="contact-btns">
+          <a
+            href="#"
+            onclick="openPdModal(event, 'call', 'tel:+79608597766')"
+            class="btn btn-primary btn-lg"
+          >
+            <img
+              src="img/phone.svg"
+              alt=""
+              width="20"
+              height="20"
+              class="btn-icon"
+            />
+            Позвонить
+          </a>
+          <a
+            href="#"
+            onclick="openPdModal(event, 'tg', 'https://t.me/USERNAME')"
+            class="btn btn-outline btn-lg"
+          >
+            <img
+              src="img/telegram.svg"
+              alt=""
+              width="20"
+              height="20"
+              class="btn-icon"
+            />
+            Telegram
+          </a>
+          <a
+            href="#"
+            onclick="
+              openPdModal(
+                event,
+                'max',
+                'https://max.ru/u/f9LHodD0cOKyi7_LiOBojwa55eY8CKw8T33xRxPtAy-Ldz02JZeBgrfp-gU',
+              )
+            "
+            class="btn btn-outline btn-lg"
+          >
+            <img
+              src="img/max.svg"
+              alt=""
+              width="20"
+              height="20"
+              class="btn-icon"
+            />
+            MAX
+          </a>
         </div>
-
-        <div class="pd-field">
-          <label class="pd-field-label">Номер телефона <span class="pd-required">*</span></label>
-          <input type="tel" class="pd-field-input" id="pdPhone" placeholder="+7 999 123-45-67" required>
-        </div>
-
-        <div class="pd-checkbox-wrap">
-          <label class="pd-checkbox-label">
-            <input type="checkbox" id="pdAgreeCheckbox">
-            <span class="pd-checkbox-custom"></span>
-            Я даю согласие на обработку своих персональных данных в соответствии с 
-            <a href="docs/politics.pdf" target="_blank">Политикой обработки ПД</a>
-            и 
-            <a href="docs/agree.pdf" target="_blank">Согласием на ОПД</a>
-          </label>
-        </div>
-
-        <p style="font-size:0.75rem; color:var(--text3); margin-top:0.8rem;">
-          * Поля обязательны для заполнения
-        </p>
       </div>
-      <button class="pd-modal-btn" id="pdSubmitBtn" disabled>Отправить и продолжить</button>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M13 2L3 14h8l-2 8 10-12h-8l2-8z" />
+          </svg>
+          <span>Свет</span>в Дом
+        </div>
+        <div class="footer-links">
+          <a href="docs/politics.pdf" target="_blank"
+            >Политика обработки персональных данных</a
+          >
+          <span class="footer-divider">|</span>
+          <a href="docs/agree.pdf" target="_blank"
+            >Согласие на обработку персональных данных</a
+          >
+          <span class="footer-divider">|</span>
+          <span class="footer-inn">ИП Коротаев В.Р. ИНН 301804520419</span>
+        </div>
+      </div>
+    </footer>
+
+    <div class="sticky-cta">
+      <a
+        href="#"
+        onclick="openPdModal(event, 'call', 'tel:+79608597766')"
+        class="btn btn-primary"
+      >
+        <img
+          src="img/phone.svg"
+          alt=""
+          width="16"
+          height="16"
+          class="btn-icon"
+        />
+        Позвонить
+      </a>
+      <a
+        href="#"
+        onclick="openPdModal(event, 'tg', 'https://t.me/USERNAME')"
+        class="btn btn-outline"
+      >
+        <img
+          src="img/telegram.svg"
+          alt=""
+          width="16"
+          height="16"
+          class="btn-icon"
+        />
+        Telegram
+      </a>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <div class="pd-modal-overlay" id="pdModal">
+      <div class="pd-modal">
+        <button class="pd-modal-close" id="pdModalClose">✕</button>
+        <div class="pd-modal-icon">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="M9 12l2 2 4-4" />
+          </svg>
+        </div>
+        <div class="pd-modal-title">Подтверждение согласия на ОПД</div>
+        <div class="pd-modal-body">
+          <p style="margin-bottom: 1rem">
+            Для связи с Вами нам нужны контактные данные. Заполните поля и дайте
+            согласие на обработку персональных данных.
+          </p>
 
+          <div class="pd-field">
+            <label class="pd-field-label"
+              >Ваше ФИО <span class="pd-required">*</span></label
+            >
+            <input
+              type="text"
+              class="pd-field-input"
+              id="pdFio"
+              placeholder="Иванов Иван Иванович"
+              required
+            />
+          </div>
+
+          <div class="pd-field">
+            <label class="pd-field-label"
+              >Номер телефона <span class="pd-required">*</span></label
+            >
+            <input
+              type="tel"
+              class="pd-field-input"
+              id="pdPhone"
+              placeholder="+7 999 123-45-67"
+              required
+            />
+          </div>
+
+          <div class="pd-checkbox-wrap">
+            <label class="pd-checkbox-label">
+              <input type="checkbox" id="pdAgreeCheckbox" />
+              <span class="pd-checkbox-custom"></span>
+              Я даю согласие на обработку своих персональных данных в
+              соответствии с
+              <a href="docs/politics.pdf" target="_blank"
+                >Политикой обработки ПД</a
+              >
+              и
+              <a href="docs/agree.pdf" target="_blank">Согласием на ОПД</a>
+            </label>
+          </div>
+
+          <p
+            style="font-size: 0.75rem; color: var(--text3); margin-top: 0.8rem"
+          >
+            * Поля обязательны для заполнения
+          </p>
+        </div>
+        <button class="pd-modal-btn" id="pdSubmitBtn" disabled>
+          Отправить и продолжить
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
