@@ -92,93 +92,55 @@ nav {
   align-items: center;
 }
 
-/* ===== КНОПКА СОГЛАСИЕ ПД — ВАРИАНТ 2 (ОБВОДКА С ПОДСВЕТКОЙ) ===== */
+/* ===== ПЕРЕЛИВАЮЩАЯСЯ КНОПКА СОГЛАСИЕ ПД (без дыхания) ===== */
 .nav-cta .btn-consent {
-  background: transparent;
-  border: 2px solid var(--red3);
-  color: var(--red3);
-  box-shadow:
-    0 0 20px rgba(255, 26, 64, 0.1),
-    inset 0 0 20px rgba(255, 26, 64, 0.05);
-  backdrop-filter: blur(4px);
-  transition: all 0.35s ease;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  position: relative;
-  padding: 0.6rem 1.6rem 0.6rem 1.2rem;
+  background: linear-gradient(
+    135deg,
+    #c0001e 0%,
+    #ff1a40 40%,
+    #e8002a 70%,
+    #ff1a40 100%
+  );
+  background-size: 300% 300%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  padding: 0.7rem 2rem 0.7rem 1.4rem;
+  position: relative;
+  box-shadow:
+    0 0 30px rgba(232, 0, 42, 0.4),
+    0 0 60px rgba(232, 0, 42, 0.2),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  animation: gradientFlow 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.7rem 2.8rem 0.7rem 1.4rem;
 }
 
-/* Пульсирующая точка справа */
+/* Пульсирующая точка */
 .nav-cta .btn-consent::after {
   content: "";
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: var(--red3);
-  box-shadow: 0 0 12px rgba(255, 26, 64, 0.6);
-  animation: pulse-dot-v2 1.8s ease-in-out infinite;
+  background: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  animation: dotBlink 1s ease-in-out infinite;
 }
 
-/* Свечение при наведении */
-.nav-cta .btn-consent:hover {
-  background: rgba(255, 26, 64, 0.12);
-  box-shadow:
-    0 0 40px rgba(255, 26, 64, 0.3),
-    inset 0 0 40px rgba(255, 26, 64, 0.05);
-  transform: translateY(-2px) scale(1.02);
-  border-color: #fff;
-  color: #fff;
-}
-
-.nav-cta .btn-consent:hover::after {
-  box-shadow: 0 0 20px rgba(255, 26, 64, 0.8);
-}
-
-/* Эффект "волны" при наведении */
-.nav-cta .btn-consent::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 8px;
-  background: linear-gradient(
-    135deg,
-    var(--red3),
-    transparent 50%,
-    var(--red3)
-  );
-  background-size: 200% 200%;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: -1;
-  filter: blur(8px);
-}
-
-.nav-cta .btn-consent:hover::before {
-  opacity: 1;
-  animation: gradientShift 2s ease-in-out infinite;
-}
-
-/* Анимация пульсации точки */
-@keyframes pulse-dot-v2 {
-  0%,
-  100% {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
-  }
-  50% {
-    opacity: 0.3;
-    transform: translateY(-50%) scale(0.6);
-  }
-}
-
-/* Анимация градиента для свечения */
-@keyframes gradientShift {
+/* Плавное переливание градиента */
+@keyframes gradientFlow {
   0% {
     background-position: 0% 50%;
   }
@@ -190,24 +152,48 @@ nav {
   }
 }
 
-/* Состояние "активна" (при клике) */
-.nav-cta .btn-consent:active {
-  transform: scale(0.97);
-  box-shadow: 0 0 20px rgba(255, 26, 64, 0.2);
+/* Мигание точки */
+@keyframes dotBlink {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    opacity: 0.2;
+    transform: translateY(-50%) scale(0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
 }
 
-/* ===== АДАПТИВ ДЛЯ КНОПКИ ===== */
+/* Hover — усиление эффекта (только свечение) */
+.nav-cta .btn-consent:hover {
+  box-shadow:
+    0 0 50px rgba(232, 0, 42, 0.7),
+    0 0 100px rgba(232, 0, 42, 0.35),
+    inset 0 0 30px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Active — эффект нажатия */
+.nav-cta .btn-consent:active {
+  transform: scale(0.95);
+}
+
+/* ===== АДАПТИВ ===== */
 @media (max-width: 768px) {
   .nav-cta .btn-consent {
-    padding: 0.4rem 1.2rem 0.4rem 0.8rem;
+    padding: 0.4rem 1.4rem 0.4rem 0.8rem;
     font-size: 0.65rem;
+    min-height: 34px;
     border-width: 1.5px;
-    min-height: 32px;
   }
   .nav-cta .btn-consent::after {
-    width: 6px;
-    height: 6px;
-    right: 6px;
+    width: 7px;
+    height: 7px;
+    right: 8px;
   }
   .nav-cta .btn-consent svg {
     width: 14px;
@@ -217,15 +203,15 @@ nav {
 
 @media (max-width: 480px) {
   .nav-cta .btn-consent {
-    padding: 0.3rem 1rem 0.3rem 0.6rem;
+    padding: 0.3rem 1.2rem 0.3rem 0.6rem;
     font-size: 0.55rem;
-    min-height: 28px;
+    min-height: 30px;
     border-width: 1.5px;
   }
   .nav-cta .btn-consent::after {
-    width: 5px;
-    height: 5px;
-    right: 5px;
+    width: 6px;
+    height: 6px;
+    right: 6px;
   }
   .nav-cta .btn-consent svg {
     width: 12px;
