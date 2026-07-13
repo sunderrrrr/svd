@@ -94,16 +94,10 @@ nav {
 
 /* ===== ПЕРЕЛИВАЮЩАЯСЯ КНОПКА СОГЛАСИЕ ПД (без дыхания) ===== */
 .nav-cta .btn-consent {
-  background: linear-gradient(
-    135deg,
-    #c0001e 0%,
-    #ff1a40 40%,
-    #e8002a 70%,
-    #ff1a40 100%
-  );
+  background: #f8c9c9;
   background-size: 300% 300%;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
+  color: var(--red);
   font-weight: 800;
   font-size: 0.85rem;
   letter-spacing: 0.06em;
@@ -134,8 +128,8 @@ nav {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  background: var(--red);
+  box-shadow: 0 0 20px var(--red);
   animation: dotBlink 1s ease-in-out infinite;
 }
 
@@ -244,7 +238,9 @@ nav {
   flex-shrink: 0;
   vertical-align: middle;
 }
-
+.btn-icon-phone {
+  filter: invert(1);
+}
 .btn-primary {
   background: var(--red);
   color: #fff;
